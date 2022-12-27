@@ -15,9 +15,9 @@ jobs:
         name: login to irohub
         uses: docker/login-action@v2
         with:
-          registry: $IROHUB_URL
-          username: $IROHUB_USERNAME
-          password: $IROHUB_TOKEN
+          registry: ${{ env.IROHUB_URL }}
+          username: ${{ env.IROHUB_USERNAME }}
+          password: ${{ env.IROHUB_TOKEN }}
       -
         name: build and push
         uses: docker/build-push-action@v3
@@ -25,4 +25,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: $IROHUB_URL/roxy-blog:latest
+          tags: ${{ env.IROHUB_URL }}/roxy-blog:latest
