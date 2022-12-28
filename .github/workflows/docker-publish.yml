@@ -22,7 +22,5 @@ jobs:
         name: build and push
         uses: docker/build-push-action@v3
         with:
-          context: .
-          file: ./Dockerfile
           push: true
           tags: ${{ secrets.IROHUB_URL }}/roxy-blog:latest
