@@ -1,12 +1,12 @@
-FROM node:19
+FROM node:lts
 
-WORKDIR /usr/src/app
+WORKDIR /node/docusaurus/app/
 
-COPY . ./
+COPY . .
 
 RUN npm install
 RUN npm run build
 
-COPY . .
 
-CMD ["npm", "run", "serve"]
+FROM nginx:latest
+COPY --from=0 /node/docusaurus/app/build /usr/share/nginx/html

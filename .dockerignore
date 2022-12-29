@@ -1,0 +1,7 @@
+.docusaurus
+node_modules
+build
+./README.md
+.DS_STORE
+.idea
+.git
