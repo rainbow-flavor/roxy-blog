@@ -17,15 +17,14 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'https://github.com/rainbow-flavor', // Usually your GitHub org/user name.
+  organizationName: 'https://github.com/rainbow-flavor',
   projectName: 'DEVELO4', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
+  // metadata like html lang.
   i18n: {
     defaultLocale: 'ko',
-    locales: ['ko'],
+    locales: ['ko','en'],
   },
 
   presets: [
@@ -58,6 +57,31 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 
     ({
+      //블로그 검색 엔진 설정
+      algolia: {
+        // 알골리아에서 제공한 appId를 사용하세요.
+        appId: 'FI1VJVX8N6',
+
+        // 공개 API 키: 커밋해도 문제가 생기지 않습니다.
+        apiKey: 'c6cc4312079589c8e6f6d3071f7e8426',
+
+        indexName: 'YOUR_INDEX_NAME',
+
+        // 옵션: 아래 문서를 참고
+        contextualSearch: true,
+
+        // 옵션: history.push 대신 window.location을 통해 탐색해야 하는 도메인을 지정합니다. 여러 문서 사이트를 크롤링하고 window.location.href를 사용하여 해당 사이트로 이동하려는 경우에 유용한 알골리아 설정입니다.
+        externalUrlRegex: 'external\\.com|domain\\.com',
+
+        // 옵션: 알골리아 검색 파라미터
+        searchParameters: {},
+
+        // 옵션: 기본적으로 활성화된 검색 페이지 경로(비활성화하려면 `false`로 설정)
+        searchPagePath: 'search',
+
+        //... 다른 알골리아 파라미터
+      },
+
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: false,
@@ -86,7 +110,7 @@ const config = {
         ],
       },
       footer: {
-        copyright: `Copyright © ${new Date().getFullYear()} Rainbow-Flavor, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Rainbow-Flavor, written by Hank & Irostub.`,
       },
       prism: {
         theme: lightCodeTheme,
