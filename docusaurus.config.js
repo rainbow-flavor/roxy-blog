@@ -27,6 +27,47 @@ const config = {
     locales: ['ko','en'],
   },
 
+  plugins: [
+    [
+      '@docusaurus/plugin-content-blog',
+      {
+        /**
+         * 멀티 인스턴스 플러그인 적용 시 필수값으로 설정해야 합니다.
+         */
+        id: 'irostub-blog',
+        /**
+         * 사이트에서 블로그 연결 시 사용할 URL 경로를 설정합니다.
+         * *절대* URL 끝에 슬래시를 붙이지 마세요.
+         */
+        routeBasePath: 'irostub',
+        // showReadingTime: true,
+        /**
+         * 사이트 디렉터리 기준으로 상대 경로를 지정합니다.
+         */
+        path: './irostub',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-blog',
+      {
+        /**
+         * 멀티 인스턴스 플러그인 적용 시 필수값으로 설정해야 합니다.
+         */
+        id: 'hank-blog',
+        /**
+         * 사이트에서 블로그 연결 시 사용할 URL 경로를 설정합니다.
+         * *절대* URL 끝에 슬래시를 붙이지 마세요.
+         */
+        routeBasePath: 'hank',
+        showReadingTime: true,
+        /**
+         * 사이트 디렉터리 기준으로 상대 경로를 지정합니다.
+         */
+        path: './hank',
+      },
+    ],
+  ],
+
   presets: [
     [
       'classic',
@@ -99,9 +140,11 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Docs',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/irostub', label: 'Irostub', position: 'left'},
+          {to: '/hank', label: 'Hank', position: 'left'},
+          // {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',
