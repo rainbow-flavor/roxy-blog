@@ -9,7 +9,7 @@ on:
 # GITHUB_REF = refs/tags/v*.*.*
 jobs:
   image-build-push:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - 
         name: login to irohub
@@ -27,12 +27,19 @@ jobs:
   
   reload:
     needs: image-build-push
-    runs-on: self-hosted
+    name: Deploy
+    runs-on: ubuntu-latest
+    env:
+      ROXY_DEP: ${{ secrets.ROXY_DEP }}
+      ROXY_DEP_PATH: ${{ secrets.ROXY_DEP_PATH }}
     steps:
-      -
-        name: reload service
-        env:
-          ROXY_DEP_PATH: ${{secrets.ROXY_DEP_PATH}}
-          ROXY_DEP: ${{secrets.ROXY_DEP}}        
-        run: |
-          ssh iromaster 'cd $ROXY_DEP_PATH && pwd && $ROXY_DEP'
+    -
+      name: pull and apply
+      uses: appleboy/ssh-action@v0.1.6
+      with: 
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: cd $ROXY_DEP_PATH && pwd && $ROXY_DEP
+
