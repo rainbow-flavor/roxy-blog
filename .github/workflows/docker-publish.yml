@@ -41,5 +41,5 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: cd $ROXY_DEP_PATH && pwd && $ROXY_DEP
+        script: cd ${{ secrets.ROXY_DEP_PATH }} && ${{ secrets.ROXY_DEP }}
 
