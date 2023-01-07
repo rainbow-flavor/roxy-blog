@@ -1,8 +1,11 @@
 ---
-title: 2022년 회고!
+title: 2022년 1년차 프론트엔드 개발자 Hank의 회고!
 authors: hank
-tags: [hank, 회고, 2022년]
+tags: [hank, 회고, 2022년, 프론트엔드, 주니어 개발자, 1년차]
 ---
+
+
+
 <!-- 
 
 slug : URL 경로를 명시
