@@ -34,9 +34,9 @@ jobs:
       name: pull and apply
       uses: appleboy/ssh-action@v0.1.6
       with: 
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
+        host: ${{ secrets.MASTER_HOST }}
+        username: ${{ secrets.MASTER_USERNAME }}
+        password: ${{ secrets.MASTER_PASSWORD }}
+        port: ${{ secrets.MASTER_PORT }}
         script: cd ${{ secrets.ROXY_DEP_PATH }} && ${{ secrets.ROXY_DEP }}
 
