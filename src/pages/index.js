@@ -11,6 +11,11 @@ export default function Home() {
             title={`Hello from ${siteConfig.title}`}
             description="Description will go into a meta tag in <head />"
         >
+            <meta
+                name="naver-site-verification"
+                content="3ee8592974e5e0d84f4c00106dfd59878efeb6cc"
+            />
+
             <main className={styles.main}>
                 <img src={Wallpaper} alt="Roxy 월페이퍼" />
             </main>
