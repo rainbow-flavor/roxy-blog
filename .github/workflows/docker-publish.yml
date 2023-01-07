@@ -29,9 +29,6 @@ jobs:
     needs: image-build-push
     name: Deploy
     runs-on: ubuntu-latest
-    env:
-      ROXY_DEP: ${{ secrets.ROXY_DEP }}
-      ROXY_DEP_PATH: ${{ secrets.ROXY_DEP_PATH }}
     steps:
     -
       name: pull and apply
