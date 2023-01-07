@@ -9,7 +9,7 @@ on:
 # GITHUB_REF = refs/tags/v*.*.*
 jobs:
   image-build-push:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - 
         name: login to irohub
@@ -24,3 +24,15 @@ jobs:
         with:
           push: true
           tags: ${{ secrets.IROHUB_URL }}/roxy-blog:latest
+  
+  reload:
+    needs: image-build-push
+    runs-on: self-hosted
+    steps:
+      -
+        name: reload service
+        env:
+          ROXY_DEP_PATH: ${{secrets.ROXY_DEP_PATH}}
+          ROXY_DEP: ${{secrets.ROXY_DEP}}        
+        run: |
+          ssh iromaster 'cd $ROXY_DEP_PATH && pwd && $ROXY_DEP'
