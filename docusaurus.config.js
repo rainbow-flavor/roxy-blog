@@ -70,6 +70,26 @@ const config = {
                 path: './hank',
             },
         ],
+        [
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'front',
+                path: 'front',
+                routeBasePath: 'front',
+                sidebarPath: require.resolve('./sidebars.js'),
+                // ... other options
+            },
+        ],
+        [
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'back',
+                path: 'back',
+                routeBasePath: 'back',
+                sidebarPath: require.resolve('./sidebars.js'),
+                // ... other options
+            },
+        ],
     ],
 
     presets: [
@@ -140,15 +160,28 @@ const config = {
                     srcDark: 'img/logo_dark.png',
                 },
                 items: [
-                    {
-                        type: 'doc',
-                        docId: 'intro',
-                        position: 'left',
-                        label: 'Docs',
-                    },
+                    // {
+                    //     type: 'doc',
+                    //     docId: 'intro',
+                    //     position: 'left',
+                    //     label: 'Docs',
+                    // },
                     { to: '/irostub', label: 'Irostub', position: 'left' },
                     { to: '/hank', label: 'Hank', position: 'left' },
-                    // {to: '/blog', label: 'Blog', position: 'left'},
+                    {
+                        type: 'docSidebar',
+                        position: 'left',
+                        sidebarId: 'front',
+                        label: 'Front',
+                        docsPluginId: 'front'
+                    },
+                    {
+                        type: 'docSidebar',
+                        position: 'left',
+                        sidebarId: 'back',
+                        label: 'Back',
+                        docsPluginId: 'back'
+                    },
                     {
                         href: 'https://github.com/facebook/docusaurus',
                         label: 'GitHub',
