@@ -10,7 +10,8 @@ const config = {
     tagline: "FB DEVELO4's BLOG",
     url: 'https://roxy.iro.ooo',
     customFields:{
-        description: 'FB DEVELO4\'s BLOG 에 어서오세요! Front 와 BackEnd 기술 문서와 간단한 블로깅을 함께하고 있습니다!'
+        description: 'FB DEVELO4\'s BLOG 에 어서오세요! Front 와 BackEnd 기술 문서와 간단한 블로깅을 함께하고 있습니다!',
+        image: 'img/wallpaper.png'
     },
     baseUrl: '/',
     onBrokenLinks: 'throw',
@@ -111,6 +112,8 @@ const config = {
                 {name: 'description', content: 'FB DEVELO4\'s BLOG 에 어서오세요! Front 와 BackEnd 기술 문서와 간단한 블로깅을 함께하고 있습니다!'},
                 {name: 'author', content: 'Irostub & Hank'},
                 {name: 'keywords', content: 'FrontEnd, BackEnd, FE, BE, Document, Blog'},
+                {property: 'og:image', content: 'img/wallpaper.png'},
+
                 {name: 'naver-site-verification', content: '3ee8592974e5e0d84f4c00106dfd59878efeb6cc'},
             ],
             //블로그 검색 엔진 설정
