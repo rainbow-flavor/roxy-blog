@@ -9,6 +9,9 @@ const config = {
     title: 'ROXY',
     tagline: "FB DEVELO4's BLOG",
     url: 'https://roxy.iro.ooo',
+    customFields:{
+        description: 'FB DEVELO4\'s BLOG 에 어서오세요! Front 와 BackEnd 기술 문서와 간단한 블로깅을 함께하고 있습니다!'
+    },
     baseUrl: '/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
