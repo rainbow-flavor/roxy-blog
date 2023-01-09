@@ -9,12 +9,9 @@ export default function Home() {
     return (
         <Layout
             title={`Hello from ${siteConfig.title}`}
-            description="Description will go into a meta tag in <head />"
+            description="FB DEVELO4's BLOG 에 어서오세요! Front 와 BackEnd 기술 문서와 간단한 블로깅을 함께하고 있습니다! <head />"
         >
-            <meta
-                name="naver-site-verification"
-                content="3ee8592974e5e0d84f4c00106dfd59878efeb6cc"
-            />
+
 
             <main className={styles.main}>
                 <img src={Wallpaper} alt="Roxy 월페이퍼" />
