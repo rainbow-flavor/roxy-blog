@@ -104,6 +104,7 @@ const config = {
     themeConfig:
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         {
+            image: 'img/wallpaper.png',
             metadata: [
                 {name: 'name', content: 'ROXY'},
                 {name: 'application-name', content: 'FB DEVELO4\'s BLOG'},
