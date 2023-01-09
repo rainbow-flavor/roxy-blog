@@ -17,7 +17,7 @@ const config = {
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
     organizationName: 'https://github.com/rainbow-flavor',
-    projectName: 'DEVELO4', // Usually your repo name.
+    projectName: 'roxy blog', // Usually your repo name.
 
     // Even if you don't use internalization, you can use this field to set useful
     // metadata like html lang.
@@ -31,9 +31,7 @@ const config = {
     themes: ['@docusaurus/theme-mermaid'],
 
     plugins: [
-        [
-            '@docusaurus/plugin-content-blog',
-            {
+        ['@docusaurus/plugin-content-blog', {
                 /**
                  * 멀티 인스턴스 플러그인 적용 시 필수값으로 설정해야 합니다.
                  */
@@ -92,39 +90,24 @@ const config = {
     ],
 
     presets: [
-        [
-            'classic',
-            /** @type {import('@docusaurus/preset-classic').Options} */
-            ({
-                gtag: {
-                    trackingID: 'G-FT5YDE3QE7',
-                    anonymizeIP: true,
-                },
-                docs: {
-                    sidebarPath: require.resolve('./sidebars.js'),
-                    // Please change this to your repo.
-                    // Remove this to remove the "edit this page" links.
-                    editUrl:
-                        'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-                },
-                blog: {
-                    showReadingTime: true,
-                    // Please change this to your repo.
-                    // Remove this to remove the "edit this page" links.
-                    editUrl:
-                        'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-                },
-                theme: {
-                    customCss: require.resolve('./src/css/custom.css'),
-                },
-            }),
+        ['@docusaurus/preset-classic',
+            {
+                gtag: {trackingID: 'G-FT5YDE3QE7', anonymizeIP: true},
+                theme: {customCss: require.resolve('./src/css/custom.css')}
+            },
         ],
     ],
 
     themeConfig:
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-
-        ({
+        {
+            metadata: [
+                {name: 'name', content: 'ROXY'},
+                {name: 'application-name', content: 'FB DEVELO4\'s BLOG'},
+                {name: 'description', content: 'FB DEVELO4\'s BLOG 에 어서오세요! Front 와 BackEnd 기술 문서와 간단한 블로깅을 함께하고 있습니다!'},
+                {name: 'author', content: 'Irostub & Hank'},
+                {name: 'keywords', content: 'FrontEnd, BackEnd, FE, BE, Document, Blog'},
+            ],
             //블로그 검색 엔진 설정
             algolia: {
                 // 알골리아에서 제공한 appId를 사용하세요.
@@ -163,12 +146,6 @@ const config = {
                     srcDark: 'img/logo_dark.png',
                 },
                 items: [
-                    // {
-                    //     type: 'doc',
-                    //     docId: 'intro',
-                    //     position: 'left',
-                    //     label: 'Docs',
-                    // },
                     { to: '/irostub', label: 'Irostub', position: 'left' },
                     { to: '/hank', label: 'Hank', position: 'left' },
                     {
@@ -186,7 +163,7 @@ const config = {
                         docsPluginId: 'back'
                     },
                     {
-                        href: 'https://github.com/facebook/docusaurus',
+                        href: 'https://github.com/rainbow-flavor/roxy-blog',
                         label: 'GitHub',
                         position: 'right',
                     },
@@ -199,7 +176,7 @@ const config = {
                 theme: lightCodeTheme,
                 darkTheme: darkCodeTheme,
             },
-        }),
+        },
 };
 
 module.exports = config;
