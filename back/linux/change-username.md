@@ -1,4 +1,5 @@
 ---
+id: change-username
 title: linux 유저명 변경하기
 authors: irostub
 tags: [irostub, linux, usermod, groupmod]
