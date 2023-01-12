@@ -15,6 +15,8 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --site-primary-hue-saturation: 0 80%;
+  --site-primary-hue-saturation-light: 167 56%;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -30,3 +32,19 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+div[class^='announcementBar_'] {
+  --site-announcement-bar-stripe-color1: hsl(
+          var(--site-primary-hue-saturation) 85%
+  );
+  --site-announcement-bar-stripe-color2: hsl(
+          var(--site-primary-hue-saturation) 95%
+  );
+  background: repeating-linear-gradient(
+          35deg,
+          var(--site-announcement-bar-stripe-color1) ,
+          var(--site-announcement-bar-stripe-color1)  20px,
+          var(--site-announcement-bar-stripe-color2)  10px,
+          var(--site-announcement-bar-stripe-color2)  40px
+  );
+  font-weight: bold;
+}

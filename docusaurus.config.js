@@ -114,6 +114,12 @@ const config = {
     themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         {
+            announcementBar: {
+                id: 'announcementBar-2',
+                content:
+                    '⚠️ Roxy 블로그는 단장중! 지금 보시는 블로그로 이전 게시물을 옮겨오는 중입니다.',
+                isCloseable: true,
+            },
             image: 'img/wallpaper.png',
             metadata: [
                 {name: 'name', content: 'ROXY'},
