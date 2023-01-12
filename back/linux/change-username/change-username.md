@@ -2,7 +2,16 @@
 id: change-username
 title: linux 유저명 변경하기
 authors: irostub
-tags: [irostub, linux, usermod, groupmod]
+tags: [irostub, linux, usermod, groupmod, 1월]
+keywords:
+    - linux
+    - usermod
+    - groupmod
+    - 리눅스
+    - 유저명 변경
+last_update:
+    date: 1/9/2023
+    author: irostub
 ---
 
 # 리눅스 유저명 변경
@@ -82,10 +91,13 @@ sudo rm -rf /home/temp_user
 ### usermod
 유저 계정에 대해 수정하는 명령
 
-***사용한 옵션***
-> -l  유저명(로그인 아이디)를 변경할 때 사용한다.  
-> -d  사용자의 홈 디렉토리를 변경할 때 사용한다.  
-> -m  해당 옵션은 -d 옵션과 같이 사용되며, 디렉토리 변경 시 기존에 사용하던 파일과 디렉토리를 모두 옮겨줄 때 사용한다.
+:::info
+
+-l  유저명(로그인 아이디)를 변경할 때 사용한다.  
+-d  사용자의 홈 디렉토리를 변경할 때 사용한다.  
+-m  해당 옵션은 -d 옵션과 같이 사용되며, 디렉토리 변경 시 기존에 사용하던 파일과 디렉토리를 모두 옮겨줄 때 사용한다.
+
+:::
 
 A 의 로그인 아이디를 B 로 변경한다.
 ```shell

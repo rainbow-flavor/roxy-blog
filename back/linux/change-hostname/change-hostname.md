@@ -1,0 +1,45 @@
+---
+id: change-hostname
+title: linux 호스트명 변경하기
+authors: irostub
+tags: [irostub, linux, hostnamectl, set-hostname, 1월]
+keywords:
+    - linux
+    - hostnamectl
+    - set-hostname
+    - 호스트이름 변경
+last_update:
+    date: 1/12/2023
+    author: irostub
+---
+
+# 리눅스 호스트명 변경
+리눅스 호스트 명을 변경하는 방법을 알아봅시다.
+## 환경
+- Ubuntu 22.04.1 LTS (GNU/Linux 5.15.0-1012-raspi aarch64)
+- 기존 호스트명 : iromaster
+- 변경 호스트명 : iromaster-machine
+
+## 명령
+### 순서
+1. hostnamectl 명령어 사용
+2. 로그아웃 & 재접속
+
+### hostnamectl 명령어 실행
+![img.png](img.png)
+
+위 사진의 iromaster 부분 (호스트명)을 바꿔보자.  아래의 명령을 실행하면 변경이 이루어진다.
+```shell
+sudo hostnamectl set-hostname iromaster-machine
+```
+
+### 계정 로그아웃 & 재접속
+잘 변경되었는지 확인하기 위해 로그아웃 및 재접속을 한다.  
+
+![img_1.png](img_1.png)
+```shell
+exit
+```
+```shell
+ssh irostub@192.168.0.1
+```
