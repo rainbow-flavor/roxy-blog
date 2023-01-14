@@ -71,7 +71,7 @@ export default function DocItemFooter() {
         const url =
             process.env.NODE_ENV === 'development'
                 ? `http://localhost:8080/views`
-                : 'http://roxy-api-service/views';
+                : 'https://roxy-api-service/views';
 
         const body = {
             urlPath: window.location.pathname,
