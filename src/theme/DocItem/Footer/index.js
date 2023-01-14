@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { ThemeClassNames } from '@docusaurus/theme-common';
 import { useDoc } from '@docusaurus/theme-common/internal';
@@ -46,6 +46,7 @@ function EditMetaRow({
     );
 }
 export default function DocItemFooter() {
+    // const { isDarkTheme } = useThemeContext();
     const { metadata } = useDoc();
     const {
         editUrl,
@@ -57,22 +58,69 @@ export default function DocItemFooter() {
     const canDisplayTagsRow = tags.length > 0;
     const canDisplayEditMetaRow = !!(editUrl || lastUpdatedAt || lastUpdatedBy);
     const canDisplayFooter = canDisplayTagsRow || canDisplayEditMetaRow;
+
+    const [views, setViews] = useState(0);
+    const [ip, setIp] = useState('');
+
+    const getIp = () => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://api.ipify.org?format=json', true);
+        xhr.onload = function () {
+            var data = JSON.parse(xhr.responseText);
+            setIp(data.ip);
+        };
+        xhr.send();
+    };
+
+    const fetchViewCount = async () => {
+        const url =
+            process.env.NODE_ENV === 'development'
+                ? `http://localhost:8080/views`
+                : 'http://roxy-api-service/views';
+
+        const urlPath = window.location.pathname;
+        const body = {
+            urlPath,
+            ip,
+        };
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        });
+        const data = await response.json();
+
+        setViews(data.viewCount);
+    };
+
+    const EYE_LIGHT_IMG_URL =
+        require('/src/theme/DocItem/Footer/eye-light.png').default;
+    const EYE_DARK_IMG_URL =
+        require('/src/theme/DocItem/Footer/eye-dark.png').default;
+
+    useEffect(() => {
+        getIp();
+    }, []);
+
+    useEffect(() => {
+        if (ip) {
+            fetchViewCount();
+        }
+    }, [ip]);
+
     if (!canDisplayFooter) {
         return null;
     }
+
     return (
         <footer
             className={clsx(ThemeClassNames.docs.docFooter, 'docusaurus-mt-lg')}
         >
-            <div>
-                <b>조회수:</b> 12
-                <img
-                    src={
-                        require('/src/theme/DocItem/Footer/visible-svgrepo-com.svg')
-                            .default
-                    }
-                    alt=""
-                />
+            <div className={styles.viewCount}>
+                <img src={EYE_DARK_IMG_URL} alt="" />
+                {views}
             </div>
             {canDisplayTagsRow && <TagsRow tags={tags} />}
 
