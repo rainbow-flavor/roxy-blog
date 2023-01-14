@@ -7,7 +7,6 @@ const EYE_DARK_IMG_URL = require('/static/img/eye_dark.png').default;
 
 const ViewCount = () => {
     const { colorMode } = useColorMode();
-    const { ip } = useGetIp();
     const [views, setViews] = useState(0);
     const isDarkMode = colorMode === 'dark';
 
