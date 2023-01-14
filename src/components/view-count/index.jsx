@@ -16,7 +16,7 @@ const ViewCount = () => {
         const url =
             process.env.NODE_ENV === 'development'
                 ? `http://localhost:8080/views`
-                : 'https://roxy-api-service/views';
+                : 'https://roxy.iro.ooo/api/v1/views';
 
         const body = {
             urlPath: window.location.pathname,
