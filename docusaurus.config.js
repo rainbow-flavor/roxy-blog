@@ -19,7 +19,7 @@ const config = {
     onBrokenMarkdownLinks: 'warn',
     staticDirectories: ['public', 'static'],
     favicon: 'img/favicon.ico',
-    trailingSlash: false,
+    trailingSlash: true,
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
     organizationName: 'https://github.com/rainbow-flavor',
