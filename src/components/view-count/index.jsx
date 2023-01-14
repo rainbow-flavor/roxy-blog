@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useColorMode } from '@docusaurus/theme-common';
-import useGetIp from '../../hooks/useGetIp';
 import styles from './index.module.css';
 
 const EYE_LIGHT_IMG_URL = require('/static/img/eye_light.png').default;
@@ -19,8 +18,7 @@ const ViewCount = () => {
                 : 'https://roxy.iro.ooo/api/v1/views';
 
         const body = {
-            urlPath: window.location.pathname,
-            ip,
+            urlPath: window.location.pathname
         };
         const response = await fetch(url, {
             method: 'POST',
@@ -35,10 +33,8 @@ const ViewCount = () => {
     };
 
     useEffect(() => {
-        if (ip) {
-            fetchViewCount();
-        }
-    }, [ip]);
+        fetchViewCount();
+    }, []);
 
     return (
         <div className={styles.wrapper}>
