@@ -19,6 +19,7 @@ const config = {
     onBrokenMarkdownLinks: 'warn',
     staticDirectories: ['public', 'static'],
     favicon: 'img/favicon.ico',
+
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
     organizationName: 'https://github.com/rainbow-flavor',
@@ -81,8 +82,7 @@ const config = {
                  */
                 blogTitle: 'Hank 의 블로그',
                 path: './hank',
-
-                blogPostComponent: require.resolve('./src/theme/BlogPostItem'),
+                blogPostComponent: require.resolve('./src/theme/BlogPostPage'),
                 feedOptions: {
                     type: 'all',
                     copyright:

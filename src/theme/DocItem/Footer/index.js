@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
-import { ThemeClassNames, useColorMode } from '@docusaurus/theme-common';
+import { ThemeClassNames } from '@docusaurus/theme-common';
 import { useDoc } from '@docusaurus/theme-common/internal';
 import LastUpdated from '@theme/LastUpdated';
 import EditThisPage from '@theme/EditThisPage';
 import TagsListInline from '@theme/TagsListInline';
 import styles from './styles.module.css';
-import useGetIp from '../../../hooks/useGetIp';
+import ViewCount from '../../../components/view-count';
 
 function TagsRow(props) {
     return (
@@ -47,10 +47,7 @@ function EditMetaRow({
     );
 }
 export default function DocItemFooter() {
-    const { colorMode } = useColorMode();
     const { metadata } = useDoc();
-    const { ip } = useGetIp();
-    const [views, setViews] = useState(0);
 
     const {
         editUrl,
@@ -63,38 +60,6 @@ export default function DocItemFooter() {
     const canDisplayEditMetaRow = !!(editUrl || lastUpdatedAt || lastUpdatedBy);
     const canDisplayFooter = canDisplayTagsRow || canDisplayEditMetaRow;
 
-    const isDarkMode = colorMode === 'dark';
-    const EYE_LIGHT_IMG_URL = require('/static/img/eye_light.png').default;
-    const EYE_DARK_IMG_URL = require('/static/img/eye_dark.png').default;
-
-    const fetchViewCount = async () => {
-        const url =
-            process.env.NODE_ENV === 'development'
-                ? `http://localhost:8080/views`
-                : 'https://roxy.iro.ooo/api/v1/views';
-
-        const body = {
-            urlPath: window.location.pathname,
-            ip,
-        };
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(body),
-        });
-        const data = await response.json();
-
-        setViews(data.viewCount);
-    };
-
-    useEffect(() => {
-        if (ip) {
-            fetchViewCount();
-        }
-    }, [ip]);
-
     if (!canDisplayFooter) {
         return null;
     }
@@ -103,13 +68,7 @@ export default function DocItemFooter() {
         <footer
             className={clsx(ThemeClassNames.docs.docFooter, 'docusaurus-mt-lg')}
         >
-            <div className={styles.viewCount}>
-                <img
-                    src={isDarkMode ? EYE_DARK_IMG_URL : EYE_LIGHT_IMG_URL}
-                    alt=""
-                />
-                {views}
-            </div>
+            <ViewCount />
             {canDisplayTagsRow && <TagsRow tags={tags} />}
 
             {canDisplayEditMetaRow && (

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import styles from './styles.module.css';
 import { useColorMode } from '@docusaurus/theme-common';
 import useGetIp from '../../hooks/useGetIp';
+import styles from './index.module.css';
 
 const EYE_LIGHT_IMG_URL = require('/static/img/eye_light.png').default;
 const EYE_DARK_IMG_URL = require('/static/img/eye_dark.png').default;
