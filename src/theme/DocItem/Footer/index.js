@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import { ThemeClassNames } from '@docusaurus/theme-common';
+import { ThemeClassNames, useColorMode } from '@docusaurus/theme-common';
 import { useDoc } from '@docusaurus/theme-common/internal';
 import LastUpdated from '@theme/LastUpdated';
 import EditThisPage from '@theme/EditThisPage';
 import TagsListInline from '@theme/TagsListInline';
 import styles from './styles.module.css';
+import useGetIp from '../../../hooks/useGetIp';
 
 function TagsRow(props) {
     return (
@@ -46,8 +47,11 @@ function EditMetaRow({
     );
 }
 export default function DocItemFooter() {
-    // const { isDarkTheme } = useThemeContext();
+    const { colorMode } = useColorMode();
     const { metadata } = useDoc();
+    const { ip } = useGetIp();
+    const [views, setViews] = useState(0);
+
     const {
         editUrl,
         lastUpdatedAt,
@@ -59,18 +63,9 @@ export default function DocItemFooter() {
     const canDisplayEditMetaRow = !!(editUrl || lastUpdatedAt || lastUpdatedBy);
     const canDisplayFooter = canDisplayTagsRow || canDisplayEditMetaRow;
 
-    const [views, setViews] = useState(0);
-    const [ip, setIp] = useState('');
-
-    const getIp = () => {
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://api.ipify.org?format=json', true);
-        xhr.onload = function () {
-            var data = JSON.parse(xhr.responseText);
-            setIp(data.ip);
-        };
-        xhr.send();
-    };
+    const isDarkMode = colorMode === 'dark';
+    const EYE_LIGHT_IMG_URL = require('/static/img/eye_light.png').default;
+    const EYE_DARK_IMG_URL = require('/static/img/eye_dark.png').default;
 
     const fetchViewCount = async () => {
         const url =
@@ -78,9 +73,8 @@ export default function DocItemFooter() {
                 ? `http://localhost:8080/views`
                 : 'http://roxy-api-service/views';
 
-        const urlPath = window.location.pathname;
         const body = {
-            urlPath,
+            urlPath: window.location.pathname,
             ip,
         };
         const response = await fetch(url, {
@@ -94,15 +88,6 @@ export default function DocItemFooter() {
 
         setViews(data.viewCount);
     };
-
-    const EYE_LIGHT_IMG_URL =
-        require('/src/theme/DocItem/Footer/eye-light.png').default;
-    const EYE_DARK_IMG_URL =
-        require('/src/theme/DocItem/Footer/eye-dark.png').default;
-
-    useEffect(() => {
-        getIp();
-    }, []);
 
     useEffect(() => {
         if (ip) {
@@ -119,7 +104,10 @@ export default function DocItemFooter() {
             className={clsx(ThemeClassNames.docs.docFooter, 'docusaurus-mt-lg')}
         >
             <div className={styles.viewCount}>
-                <img src={EYE_DARK_IMG_URL} alt="" />
+                <img
+                    src={isDarkMode ? EYE_DARK_IMG_URL : EYE_LIGHT_IMG_URL}
+                    alt=""
+                />
                 {views}
             </div>
             {canDisplayTagsRow && <TagsRow tags={tags} />}
