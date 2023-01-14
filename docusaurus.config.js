@@ -19,6 +19,7 @@ const config = {
     onBrokenMarkdownLinks: 'warn',
     staticDirectories: ['public', 'static'],
     favicon: 'img/favicon.ico',
+    trailingSlash: false,
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
     organizationName: 'https://github.com/rainbow-flavor',
@@ -55,6 +56,7 @@ const config = {
                 blogDescription:
                     'Irostub 블로그에 어서오세요! 잡글, 연간회고 등 다양한 포스트가 기다리고있어요!',
                 path: './irostub',
+                blogPostComponent: require.resolve('./src/theme/BlogPostPage'),
                 feedOptions: {
                     type: 'all',
                     copyright:
@@ -81,6 +83,7 @@ const config = {
                  */
                 blogTitle: 'Hank 의 블로그',
                 path: './hank',
+                blogPostComponent: require.resolve('./src/theme/BlogPostPage'),
                 feedOptions: {
                     type: 'all',
                     copyright:
@@ -96,9 +99,9 @@ const config = {
                 path: 'front',
                 routeBasePath: 'front',
                 sidebarPath: require.resolve('./sidebars.js'),
-                docItemComponent: require.resolve(
-                    './src/theme/DocItem/index.js'
-                ),
+                docItemComponent: require.resolve('./src/theme/DocItem'),
+                showLastUpdateTime: true,
+                showLastUpdateAuthor: true,
             },
         ],
         [
@@ -108,6 +111,7 @@ const config = {
                 path: 'back',
                 routeBasePath: 'back',
                 sidebarPath: require.resolve('./sidebars.js'),
+                docItemComponent: require.resolve('./src/theme/DocItem'),
                 showLastUpdateTime: true,
                 showLastUpdateAuthor: true,
             },

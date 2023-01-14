@@ -1,0 +1,11 @@
+.blogPostFooterDetailsFull {
+  flex-direction: column;
+}
+
+.footerBox {
+
+}
+
+.footerBox > div {
+  padding: 0 var(--ifm-spacing-horizontal);
+}
