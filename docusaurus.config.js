@@ -81,6 +81,8 @@ const config = {
                  */
                 blogTitle: 'Hank 의 블로그',
                 path: './hank',
+
+                blogPostComponent: require.resolve('./src/theme/BlogPostItem'),
                 feedOptions: {
                     type: 'all',
                     copyright:
@@ -96,9 +98,9 @@ const config = {
                 path: 'front',
                 routeBasePath: 'front',
                 sidebarPath: require.resolve('./sidebars.js'),
-                docItemComponent: require.resolve(
-                    './src/theme/DocItem/index.js'
-                ),
+                docItemComponent: require.resolve('./src/theme/DocItem'),
+                showLastUpdateTime: true,
+                showLastUpdateAuthor: true,
             },
         ],
         [
@@ -108,6 +110,7 @@ const config = {
                 path: 'back',
                 routeBasePath: 'back',
                 sidebarPath: require.resolve('./sidebars.js'),
+                docItemComponent: require.resolve('./src/theme/DocItem'),
                 showLastUpdateTime: true,
                 showLastUpdateAuthor: true,
             },
