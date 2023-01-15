@@ -1,12 +1,10 @@
 name: ci
 
-# v 태그가 붙은 push 가 일어날 경우만 트리거
 on:
   push:
     branches:
       - 'master'
 
-# GITHUB_REF = refs/tags/v*.*.*
 jobs:
   image-build-push:
     runs-on: ubuntu-latest
