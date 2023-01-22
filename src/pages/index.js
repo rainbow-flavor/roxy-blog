@@ -7,6 +7,7 @@ import {
     NerdHompageFeatures,
 } from '../components/homepage-feature';
 import { MainContext } from '../context/main-context';
+import HomepageHeader from '../components/homepage-feature/homepage-header';
 
 export default function Home() {
     const { siteConfig } = useDocusaurusContext();
@@ -18,7 +19,8 @@ export default function Home() {
                 title={`Hello from ${siteConfig.title}`}
                 description="FB DEVELO4's BLOG 에 어서오세요! Front 와 BackEnd 기술 문서와 간단한 블로깅을 함께하고 있습니다! <head />"
             >
-                <main className={styles.main}>
+                {isStrict && <HomepageHeader />}
+                <main className={isStrict ? styles.strictMain : styles.main}>
                     {isStrict ? <HomepageFeatures /> : <NerdHompageFeatures />}
                 </main>
             </Layout>
