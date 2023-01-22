@@ -16,7 +16,7 @@ const HomepageHeader = () => {
                     <div className={styles.buttons}>
                         <Link
                             className="button button--secondary button--md"
-                            to="/front/"
+                            to="/front/next-auth"
                         >
                             Frontend Development Post for Web
                         </Link>
@@ -24,7 +24,7 @@ const HomepageHeader = () => {
                     <div className={styles.buttons}>
                         <Link
                             className="button button--secondary button--md"
-                            to="/back/"
+                            to="/back/design-pattern"
                         >
                             Backend Development Post for Web
                         </Link>
@@ -32,7 +32,7 @@ const HomepageHeader = () => {
                     <div className={styles.buttons}>
                         <Link
                             className="button button--secondary button--md"
-                            to="/infra/"
+                            to="/infra/intro"
                         >
                             Infra Development Post for Web
                         </Link>
