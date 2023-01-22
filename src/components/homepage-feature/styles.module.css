@@ -1,0 +1,71 @@
+.features {
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+    width: 100%;
+    line-height: normal;
+    font-size: initial;
+}
+
+.featureSvg {
+    height: 200px;
+    width: 200px;
+}
+
+.nerdFeature {
+    line-height: 0;
+    font-size: 0;
+}
+
+.nerdFeature img {
+    width: 100%;
+}
+
+
+
+@media screen and (max-width: 1500px) {
+    .nerdFeature {
+        height: calc(100vh - 90px);
+    }
+
+    .nerdFeature > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+
+    }
+}
+
+.heroBanner {
+    padding: 4rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    color: var(--ifm-color-primary);
+}
+
+@media screen and (max-width: 996px) {
+    .heroBanner {
+        padding: 2rem;
+    }
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 8px;
+}
+
+@media screen and (max-width: 996px) {
+    .buttonGroup {
+        flex-direction: column;
+    }
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

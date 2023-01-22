@@ -7,6 +7,10 @@
   font-size: 0;
 }
 
+.strictMain {
+
+}
+
 @media screen and (max-width: 1500px) {
   .main {
     height: calc(100vh - 90px);
@@ -17,6 +21,5 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-
   }
 }
