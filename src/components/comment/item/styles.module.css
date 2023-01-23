@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 1.5em;
+    gap: 1.5em;
+    border-bottom: 1px solid var(--ifm-color-secondary);
+}
+
+
+.info {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.infoEditButton {
+    font-size: 0.75em;
+    color: rgb(189, 147, 249);
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+}
+
+.active {
+    color: var(--ifm-color-primary);
+    text-decoration: underline;
+}
+
+.infoEditInput {
+    display: block;
+    width: 150px;
+    padding: 2px;
+}
+
+
+.info b {
+
+}
+
+.description {
+    width: 100%;
+}
+
+.descriptionEditInput {
+    min-height: 15em;
+    resize: none;
+}

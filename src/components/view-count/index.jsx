@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useColorMode } from '@docusaurus/theme-common';
 import styles from './index.module.css';
+import { API_URL } from '../../constants/url';
 
 const EYE_LIGHT_IMG_URL = require('/static/img/eye_light.png').default;
 const EYE_DARK_IMG_URL = require('/static/img/eye_dark.png').default;
@@ -11,13 +12,10 @@ const ViewCount = () => {
     const isDarkMode = colorMode === 'dark';
 
     const fetchViewCount = async () => {
-        const url =
-            process.env.NODE_ENV === 'development'
-                ? `http://localhost:8080/views`
-                : 'https://roxy.iro.ooo/api/v1/views';
+        const url = API_URL + '/views';
 
         const body = {
-            urlPath: window.location.pathname
+            urlPath: window.location.pathname,
         };
         const response = await fetch(url, {
             method: 'POST',
