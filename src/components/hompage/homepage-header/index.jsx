@@ -4,6 +4,7 @@ import styles from './styles.module.css';
 import clsx from 'clsx';
 import HankImg from '@site/static/img/hank-profile.png';
 import IrostubImg from '@site/static/img/irostub-profile.jpeg';
+import Link from '@docusaurus/core/lib/client/exports/Link';
 
 const HomepageHeader = () => {
     const { siteConfig } = useDocusaurusContext();
@@ -33,6 +34,12 @@ const HomepageHeader = () => {
                 <p className={clsx('hero__subtitle', styles.subTitle)}>
                     {siteConfig.tagline}
                 </p>
+
+                <button className="button button--secondary button--md">
+                    <Link href="/front/next-auth" className={styles.buttonLink}>
+                        글 보러가기
+                    </Link>
+                </button>
             </div>
         </header>
     );

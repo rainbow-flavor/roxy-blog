@@ -50,9 +50,12 @@
 
 .subTitle {
     font-size: 1.5em;
-    color: var(--ifm-color-secondary);
+    color: var(--ifm-heading-color);
 }
 
+.buttonLink {
+    color: var(--home-page-header-button-color);
+}
 
 
 
