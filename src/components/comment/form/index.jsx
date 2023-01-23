@@ -4,7 +4,7 @@ import useInput from '../../../hooks/use-input';
 import clsx from 'clsx';
 import { API_URL } from '../../../constants/url';
 
-const CommentForm = () => {
+const CommentForm = ({ onSubmit }) => {
     const [isLoading, setIsLoading] = useState(false);
     const { value, onChange, resetValue } = useInput();
     const {
@@ -51,6 +51,7 @@ const CommentForm = () => {
         } catch (err) {
             console.error(err);
         } finally {
+            onSubmit?.();
             setIsLoading(false);
         }
     };
