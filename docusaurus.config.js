@@ -207,6 +207,11 @@ const config = {
                             },
                         ],
                     },
+                    {
+                        href: 'https://github.com/rainbow-flavor/roxy-blog',
+                        label: 'GitHub',
+                        position: 'right',
+                    },
                 ],
             },
             footer: {
