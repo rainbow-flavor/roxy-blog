@@ -1,39 +1,30 @@
 import React, { useState } from 'react';
 import styles from './styles.module.css';
 import clsx from 'clsx';
+import useInput from '../../../hooks/use-input';
 
-const useInput = (initialValue = '') => {
-    const [value, setValue] = useState(initialValue);
-    const onChange = (e) => {
-        setValue(e.target.value);
-    };
-
-    return {
-        value,
-        onChange,
-    };
-};
+const dummy = `Section 1.10.33 of "de Finibus Bonorum et Malorum", written
+by Cicero in 45 BC "At vero eos et accusamus et iusto odio
+dignissimos ducimus qui blanditiis praesentium voluptatum
+deleniti atque corrupti quos dolores et quas molestias
+excepturi sint occaecati cupiditate non provident, similique
+sunt in culpa qui officia deserunt mollitia animi, id est
+laborum et dolorum fuga. Et harum quidem rerum facilis est
+et expedita distinctio. Nam libero tempore, cum soluta nobis
+est eligendi optio cumque nihil impedit quo minus id quod
+maxime placeat facere possimus, omnis voluptas assumenda
+est, omnis dolor repellendus. Temporibus autem quibusdam et
+aut officiis debitis aut rerum necessitatibus saepe eveniet
+ut et voluptates repudiandae sint et molestiae non
+recusandae. Itaque earum rerum hic tenetur a sapiente
+delectus, ut aut reiciendis voluptatibus maiores alias
+consequatur aut perferendis doloribus asperiores repellat."
+1914 translation by H. Rackham`;
 
 const CommentItem = () => {
     const { value, onChange } = useInput();
     const { value: descritpionValue, onChange: onDescriptionChange } =
-        useInput(`Section 1.10.33 of "de Finibus Bonorum et Malorum", written
-        by Cicero in 45 BC "At vero eos et accusamus et iusto odio
-        dignissimos ducimus qui blanditiis praesentium voluptatum
-        deleniti atque corrupti quos dolores et quas molestias
-        excepturi sint occaecati cupiditate non provident, similique
-        sunt in culpa qui officia deserunt mollitia animi, id est
-        laborum et dolorum fuga. Et harum quidem rerum facilis est
-        et expedita distinctio. Nam libero tempore, cum soluta nobis
-        est eligendi optio cumque nihil impedit quo minus id quod
-        maxime placeat facere possimus, omnis voluptas assumenda
-        est, omnis dolor repellendus. Temporibus autem quibusdam et
-        aut officiis debitis aut rerum necessitatibus saepe eveniet
-        ut et voluptates repudiandae sint et molestiae non
-        recusandae. Itaque earum rerum hic tenetur a sapiente
-        delectus, ut aut reiciendis voluptatibus maiores alias
-        consequatur aut perferendis doloribus asperiores repellat."
-        1914 translation by H. Rackham`);
+        useInput(dummy);
     const [isEdit, setIsEdit] = useState(false);
 
     const handleEdit = () => {
@@ -69,6 +60,8 @@ const CommentItem = () => {
             {isEdit ? (
                 <textarea
                     className={styles.descriptionEditInput}
+                    cols="30"
+                    rows="10"
                     draggable={false}
                     value={descritpionValue}
                     onChange={onDescriptionChange}
