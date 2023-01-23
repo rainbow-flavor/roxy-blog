@@ -1,15 +1,10 @@
-.layout {
-
-}
 
 .main {
   line-height: 0;
   font-size: 0;
 }
 
-.strictMain {
 
-}
 
 @media screen and (max-width: 1500px) {
   .main {

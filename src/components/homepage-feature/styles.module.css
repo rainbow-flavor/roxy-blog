@@ -7,9 +7,21 @@
     font-size: initial;
 }
 
-.featureSvg {
-    height: 200px;
-    width: 200px;
+.featureRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.featureImg {
+    max-width: 100px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+}
+
+[data-theme='dark'] .featureImg {
+    box-shadow: 1px 1px 1px rgba(255,255,255,0.1);
 }
 
 .nerdFeature {
@@ -37,19 +49,12 @@
     }
 }
 
-.heroBanner {
-    padding: 4rem 0;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    color: var(--ifm-color-primary);
-}
-
 @media screen and (max-width: 996px) {
-    .heroBanner {
+    .header {
         padding: 2rem;
     }
 }
+
 
 .buttonGroup {
     display: flex;
@@ -69,3 +74,21 @@
     align-items: center;
     justify-content: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
