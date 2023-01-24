@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './styles.module.css';
 import useInput from '../../../hooks/use-input';
 import clsx from 'clsx';
-import { API_URL } from '../../../constants/url';
+import api from '../../../lib/api';
 
 const CommentForm = ({ onSubmit }) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -30,19 +30,11 @@ const CommentForm = ({ onSubmit }) => {
             if (!password) return alert('비밀번호가 입력되지 않았습니다.');
             if (!content) return alert('내용이 입력되지 않았습니다.');
 
-            const body = JSON.stringify({
+            await api.post(`/comment/create`, {
                 username,
                 password,
                 content,
                 path,
-            });
-
-            await fetch(`${API_URL}/comment/create`, {
-                method: 'POST',
-                body,
-                headers: {
-                    'Content-Type': 'application/json',
-                },
             });
 
             resetValue();

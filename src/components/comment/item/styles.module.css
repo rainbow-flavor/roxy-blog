@@ -3,7 +3,7 @@
     flex-direction: column;
     width: 100%;
     padding-bottom: 1.5em;
-    gap: 1.5em;
+    gap: 0.5em;
     border-bottom: 1px solid var(--ifm-color-secondary);
 }
 
