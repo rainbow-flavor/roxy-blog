@@ -1,0 +1,9 @@
+.container {
+    padding-top: 1.5em;
+}
+
+.commentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
