@@ -16,7 +16,7 @@
     width: 150px;
     padding: 8px;
     border-radius: 8px;
-    border: none;
+    border: 1px solid #ccd0d5;
 }
 
 .textarea {
@@ -24,7 +24,7 @@
     border-radius: 8px;
     font-size: 16px;
     resize: none;
-    border: none;
+    border: 1px solid #ccd0d5;
 }
 
 .submitButton {
@@ -32,9 +32,16 @@
     width: auto;
     justify-content: center;
     margin-left: auto;
-    color:var(--ifm-color-black);
+    color:var(--ifm-color-white);
     background: var(--ifm-color-primary);
     padding: 8px;
     border-radius: 8px;
+}
+
+[data-theme='dark'] .textarea,[data-theme='dark'] .input {
     border: none;
+}
+
+[data-theme='dark'] .submitButton {
+    color:var(--ifm-color-black);
 }

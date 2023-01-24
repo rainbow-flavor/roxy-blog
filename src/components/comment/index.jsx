@@ -36,8 +36,14 @@ const Comment = () => {
                     gap: '16px',
                 }}
             >
-                {list.map((data) => {
-                    return <CommentItem key={data.id} {...data} />;
+                {list?.map((data) => {
+                    return (
+                        <CommentItem
+                            key={data.id}
+                            {...data}
+                            onSubmit={getCommentList}
+                        />
+                    );
                 })}
             </div>
         </div>
