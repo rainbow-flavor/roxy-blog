@@ -1,22 +1,12 @@
 ---
 title: 이벤트 큐가 터져버린 2022년 회고
 authors: irostub
-tags: [irostub,회고,2022년,1월]
+tags: [irostub,백엔드,회고,2022년,1월]
+keywords: [irostub,회고,2022년,1월,백엔드,개발자]
 image: ./img_13.png
 ---
-<!-- 
-
-slug : URL 경로를 명시
-title : 제목을 명시
-authors : 작성자 속성
- - name : 작성자 명
-   title : 작성자 설명
-   url : name 을 눌렀을 때 전환할 링크
-   image_url : 작성자 콘
-tag : 이 글의 tag 분류
--->
-
-# 2022년 회고
+# 이벤트 큐가 터져버린 2022년 회고
+수많은 이벤트가 터져나와 큐가 폭발해버린 2022년 한해를 정리해봅시다.
 
 ## 돌아와버린 백수
 ![img.png](img.png)  
