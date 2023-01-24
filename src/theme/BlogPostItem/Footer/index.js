@@ -11,6 +11,7 @@ export default function BlogPostItemFooter() {
     const { metadata, isBlogPostPage } = useBlogPost();
     const { tags, title, editUrl, hasTruncateMarker } = metadata;
     // A post is truncated if it's in the "list view" and it has a truncate marker
+
     const truncatedPost = !isBlogPostPage && hasTruncateMarker;
     const tagsExists = tags.length > 0;
     const renderFooter = tagsExists || truncatedPost || editUrl;
@@ -25,7 +26,7 @@ export default function BlogPostItemFooter() {
             )}
         >
             <div className={styles.footerBox}>
-                <ViewCount />
+                {isBlogPostPage && <ViewCount />}
                 {tagsExists && (
                     <div className={clsx('col', { 'col--9': truncatedPost })}>
                         <TagsListInline tags={tags} />
