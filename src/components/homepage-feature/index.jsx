@@ -1,42 +1,59 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import Wallpaper from '@site/static/img/wallpaper.png';
+import Link from '@docusaurus/core/lib/client/exports/Link';
 
 const FeatureList = [
     {
-        title: 'Easy to Learn',
-        Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-        description: <>개발자 공식 문서를 더욱 쉽게 공부해봅시다.</>,
-    },
-    {
-        title: 'Focus on What Matters',
-        Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+        title: 'Support Us',
+        name: 'rainbow-flavor',
         description: (
             <>
-                새로운 기술이 나타났을 때, 어떤 배경으로 왜 태어났는지 <br />
-                집중해봅시다.
+                Give me a star at here <br />
+                <Link href="https://github.com/rainbow-flavor">GitHub</Link>
             </>
         ),
     },
     {
-        title: 'Powered by React',
-        Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+        title: 'Support Hank',
+        name: 'ranjafunc',
         description: (
             <>
-                <code>react</code> <code>next.js</code> <code>web3</code>
+                Give me a star at here <br />
+                <Link href="https://github.com/ranjafunc">GitHub</Link>
+            </>
+        ),
+    },
+    {
+        title: 'Support Irostub',
+        name: 'irostub',
+        description: (
+            <>
+                Give me a star at here <br />
+                <Link href="https://github.com/irostub">GitHub</Link>
             </>
         ),
     },
 ];
-function Feature({ Svg, title, description }) {
+function Feature({ Svg, title, description, name }) {
+    const [src, setSrc] = useState('');
+    const getProfileImg = async () => {
+        const response = await fetch(`https://api.github.com/users/${name}`, {
+            method: 'GET',
+        }).then((res) => res.json());
+        setSrc(response.avatar_url);
+    };
+
+    useEffect(() => {
+        getProfileImg();
+    }, []);
+
     return (
-        <div className={clsx('col col--4')}>
-            <div className="text--center">
-                <Svg className={styles.featureSvg} role="img" />
-            </div>
+        <div className={clsx('col col--4', styles.featureItem)}>
             <div className="text--center padding-horiz--md">
                 <h3>{title}</h3>
+                <img className={styles.featureImg} src={src} alt={name} />
                 <p>{description}</p>
             </div>
         </div>

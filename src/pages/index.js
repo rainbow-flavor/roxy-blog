@@ -7,7 +7,7 @@ import {
     NerdHompageFeatures,
 } from '../components/homepage-feature';
 import { MainContext } from '../context/main-context';
-import HomepageHeader from '../components/homepage-feature/homepage-header';
+import HomepageHeader from '../components/hompage/homepage-header';
 
 export default function Home() {
     const { siteConfig } = useDocusaurusContext();
