@@ -1,0 +1,88 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 1.5em;
+    gap: 0.5em;
+    border-bottom: 1px solid var(--ifm-color-secondary);
+}
+
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+}
+
+.editField {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.infoEditButton {
+    font-size: 0.75em;
+    color: rgb(189, 147, 249);
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.infoEditButton:hover {
+    border-bottom: 1px solid rgb(189, 147, 249);
+}
+
+.active {
+    color: var(--ifm-color-primary);
+}
+
+.active:hover {
+    border-bottom: 1px solid var(--ifm-color-primary);
+}
+
+.infoEditInput {
+    display: block;
+    width: 150px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccd0d5;
+}
+
+[data-theme='dark'] .infoEditInput,[data-theme='dark'] .descriptionEditInput  {
+    border: none;
+}
+
+
+.info b {
+    margin-bottom: 0.5em;
+}
+
+.description {
+    width: 100%;
+}
+
+.descriptionEditInput {
+    min-height: 15em;
+    padding: 8px;
+    resize: none;
+    border-radius: 8px;
+    font-size: 16px;
+    border: 1px solid #ccd0d5;
+
+}
+
+.submitEditContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+}
+
+.submitEditButton {
+    width: auto;
+    padding: 8px;
+    border-radius: 8px;
+    background: var(--ifm-color-primary);
+}
