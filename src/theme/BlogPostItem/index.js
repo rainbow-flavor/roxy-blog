@@ -13,13 +13,14 @@ function useContainerClassName() {
     return !isBlogPostPage ? 'margin-bottom--xl' : undefined;
 }
 export default function BlogPostItem({ children, className }) {
+    const { isBlogPostPage } = useBlogPost();
     const containerClassName = useContainerClassName();
     return (
         <BlogPostItemContainer className={clsx(containerClassName, className)}>
             <BlogPostItemHeader />
             <BlogPostItemContent>{children}</BlogPostItemContent>
             <BlogPostItemFooter />
-            <Comment />
+            {isBlogPostPage && <Comment />}
         </BlogPostItemContainer>
     );
 }
