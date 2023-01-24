@@ -1,8 +1,8 @@
 ---
 title: Stateful 과 Stateless 의 차이
 authors: irostub
-tags: [irostub, http, stateless, stateful]
-keywords: [http, stateless, stateful]
+tags: [irostub,http,stateless,stateful]
+keywords: [http,stateless,stateful]
 ---
 
 # Stateful 과 Stateless 의 차이

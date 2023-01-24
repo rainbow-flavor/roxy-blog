@@ -1,7 +1,7 @@
 ---
 title: 이벤트 큐가 터져버린 2022년 회고
 authors: irostub
-tags: [irostub, 회고, 2022년, 1월]
+tags: [irostub,회고,2022년,1월]
 image: ./img_13.png
 ---
 <!-- 
