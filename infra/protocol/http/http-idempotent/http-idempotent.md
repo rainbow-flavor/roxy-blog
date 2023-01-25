@@ -1,8 +1,12 @@
 ---
-title: HTTP 메서드 속성, 멱등(Idempotent)에 대해서 알아보자
+id: http-idempotent
+title: HTTP 메서드의 속성, 멱등(Idempotent)이란?
 authors: irostub
 tags: [irostub,http,idempotent,멱등]
 keywords: [http,idempotent,멱등]
+last_update:
+    date: 3/17/2021
+    author: irostub
 ---
 
 # HTTP 메서드의 속성, 멱등(Idempotent)이란?

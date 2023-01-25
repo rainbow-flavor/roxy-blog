@@ -2,12 +2,8 @@
 id: facade-pattern
 title: 퍼사트 패턴 (Facade Pattern)
 authors: irostub
-tags: [irostub, design pattern, 디자인패턴, facade, 퍼사드, 1월]
-keywords:
-    - design pattern
-    - 디자인패턴
-    - facade pattern
-    - 퍼사드 패턴
+tags: [irostub,design pattern,디자인패턴,facade,퍼사드,1월]
+keywords: [design pattern,디자인패턴,facade pattern,퍼사드 패턴]
 last_update:
     date: 1/12/2023
     author: irostub

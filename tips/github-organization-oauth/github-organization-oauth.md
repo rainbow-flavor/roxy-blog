@@ -1,10 +1,14 @@
 ---
+id: github-organization-oauth
 title: github organizations 타 앱 OAuth 허용하기
 tags: [irostub,github,intellij,OAuth,organizations,troubleshooting]
 keywords: [github,intellij,OAuth,organizations,깃허브,인텔리제이]
+last_update:
+    date: 3/2/2021
+    author: irostub
 ---
-
-## github 에서 타사 앱 OAuth 권한을 주자
+# github organizations 타 앱 OAuth 허용하기
+github 에서 타사 앱 OAuth 권한을 주는 방법을 알아봅시다.
 
 ### 오류 메세지
 

@@ -1,8 +1,12 @@
 ---
+id: java-static-stack-heap
 title: JAVA/ Static, Stack, Heap 메모리 영역의 이해
 authors: irostub
 tags: [irostub,java,memory,static,stack,heap]
-keywords: [irostub,java,memory,static,stack,heap]
+keywords: [java,memory,static,stack,heap]
+last_update:
+    date: 3/18/2021
+    author: irostub
 ---
 
 # JAVA 메모리 영역의 이해

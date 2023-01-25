@@ -1,11 +1,15 @@
 ---
+id: gpg-copy-to-other-machine
 title: 다른 기기로 gpg 키 복사 및 커밋 서명
 authors: irostub
-tags: [gpg,git,mac,troubleshooting]
+tags: [irostub,gpg,git,mac,troubleshooting]
 keywords: [gpg,gnupg,key,git,import,export,mac,How to export and import gpg key commit sign other machine]
+last_update:
+  date: 2/26/2021
+  author: irostub
 ---
 
-# GPG Key 를 복사하여 옮기기
+# 다른 기기로 gpg 키 복사 및 커밋 서명
 
 얼마전에 새로운 맥북과 서브 데스크톱을 구매했습니다. 새로운 기기에서도 역시나 깃을 사용해야 했기 때문에 커밋 서명(git commit sign)에 필요한 GPG 키를 기존 메인 데스크톱에서 가져와야했습니다.
 하지만, GPG 키를 복사해서 새로운 환경에서 가져오는 가이드를 찾을 수 없었습니다.

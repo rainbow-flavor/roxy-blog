@@ -116,6 +116,30 @@ const config = {
                 showLastUpdateAuthor: true,
             },
         ],
+        [
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'infra',
+                path: 'infra',
+                routeBasePath: 'infra',
+                sidebarPath: require.resolve('./sidebars.js'),
+                docItemComponent: require.resolve('./src/theme/DocItem'),
+                showLastUpdateTime: true,
+                showLastUpdateAuthor: true,
+            },
+        ],
+        [
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'tips',
+                path: 'tips',
+                routeBasePath: 'tips',
+                sidebarPath: require.resolve('./sidebars.js'),
+                docItemComponent: require.resolve('./src/theme/DocItem'),
+                showLastUpdateTime: true,
+                showLastUpdateAuthor: true,
+            },
+        ],
     ],
 
     presets: [
@@ -126,8 +150,8 @@ const config = {
                 theme: { customCss: require.resolve('./src/css/custom.css') },
                 // preset-classic 을 사용할 때, 최소 하나의 docs 는 정의되어있어야한다.
                 docs: {
-                    path: 'infra',
-                    routeBasePath: 'infra',
+                    path: 'docs',
+                    routeBasePath: 'docs',
                     lastVersion: 'current',
                     onlyIncludeVersions: ['current'],
                     sidebarPath: require.resolve('./sidebars.js'),
@@ -181,30 +205,37 @@ const config = {
                     srcDark: 'img/logo_dark.png',
                 },
                 items: [
-                    { to: '/irostub', label: 'Irostub', position: 'left' },
-                    { to: '/hank', label: 'Hank', position: 'left' },
+                    {
+                        type: 'docSidebar',
+                        sidebarId: 'front',
+                        label: 'Front',
+                        docsPluginId: 'front',
+                    },
+                    {
+                        type: 'docSidebar',
+                        sidebarId: 'back',
+                        label: 'Back',
+                        docsPluginId: 'back',
+                    },
+                    {
+                        type: 'docSidebar',
+                        sidebarId: 'infra',
+                        label: 'Infra',
+                        docsPluginId: 'infra',
+                    },
+                    {
+                        type: 'docSidebar',
+                        sidebarId: 'tips',
+                        label: 'Tips',
+                        docsPluginId: 'tips',
+                    },
                     {
                         type: 'dropdown',
-                        label: 'Docs',
+                        label: 'Blogs',
                         position: 'left',
                         items: [
-                            {
-                                type: 'docSidebar',
-                                sidebarId: 'front',
-                                label: 'Front',
-                                docsPluginId: 'front',
-                            },
-                            {
-                                type: 'docSidebar',
-                                sidebarId: 'back',
-                                label: 'Back',
-                                docsPluginId: 'back',
-                            },
-                            {
-                                type: 'doc',
-                                docId: 'intro',
-                                label: 'Infra',
-                            },
+                            { to: '/irostub', label: 'Irostub'},
+                            { to: '/hank', label: 'Hank'},
                         ],
                     },
                     {

@@ -1,11 +1,15 @@
 ---
-title: VS Code 에서 .Vue 자동완성(Emmet)기능이 작동하지 않을 때
+id: vscode-vue-emmet
+title: .Vue 에서 HTML 자동완성 기능(Emmet)을 사용
 authors: irostub
 tags: [irostub,emmet,vscode,visual studio code,vuejs,troubleshooting]
 keywords: [emmet,vscode,visual studio code,vuejs]
+last_update:
+    date: 2/28/2021
+    author: irostub
 ---
 
-# .Vue 에서 HTML의 자동완성 기능(Emmet)을 사용
+# .Vue 에서 HTML 자동완성 기능(Emmet)을 사용
 
 이 답답한 일은 Vue 를 배우던 중 터졌다. 확장자가 \*.Vue 인 Vue Component 를 Visual Studio Code 에서 작성을 하고 있었다. Vue 컴포넌트 작성 간 해당 컴포넌트에 해당하는 Html 코드를 작성해야하는데
 .html 파일에선 잘 작동하던 Emmet 기능이 .vue 에 선 제대로 작동하지 않았다. 이게 없어도 직접 다 코딩하면 되는 부분이지만, 프로그래머로써 귀찮은건 참을 수 없다하지 않는가. 사소한거 하나도 자동화 하려고 하는 때에 Emmet 기능을 사용하지 못한다는건 참을 수 없었다. 잡담은 여기까지 하고 바로 해결법을 알아보자.
