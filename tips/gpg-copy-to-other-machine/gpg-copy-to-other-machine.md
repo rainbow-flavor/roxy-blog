@@ -2,7 +2,7 @@
 id: gpg-copy-to-other-machine
 title: 다른 기기로 gpg 키 복사 및 커밋 서명
 authors: irostub
-tags: [irostub,gpg,git,mac,troubleshooting]
+tags: [irostub,2021,gpg,git,mac,troubleshooting]
 keywords: [gpg,gnupg,key,git,import,export,mac,How to export and import gpg key commit sign other machine]
 last_update:
   date: 2/26/2021

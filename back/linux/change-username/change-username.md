@@ -2,15 +2,10 @@
 id: change-username
 title: linux 유저명 변경하기
 authors: irostub
-tags: [irostub, linux, usermod, groupmod, 1월]
-keywords:
-    - linux
-    - usermod
-    - groupmod
-    - 리눅스
-    - 유저명 변경
+tags: [irostub,2023,linux,usermod,groupmod,1월]
+keywords: [linux,usermod,groupmod,리눅스,유저명 변경]
 last_update:
-    date: 1/9/2023
+    date: 1/26/2023
     author: irostub
 ---
 
@@ -32,27 +27,27 @@ last_update:
 7. 임시계정 삭제
 
 ### 임시 sudo 계정 추가
-계정명 변경 작업을 해주기 위해 임시로 접속할 sudo 계정을 추가한다.
-계정 추가 시 비밀번호 설정만 해주고 나머지는 전부 공백으로 두고 넘어간다.
+계정명 변경 작업을 해주기 위해 임시로 접속할 sudo 계정을 추가합니다
+계정 추가 시 비밀번호 설정만 해주고 나머지는 전부 공백으로 두고 넘어갑니다.
 ```shell
 sudo adduser temp_user
 sudo adduser temp_user sudo
 ```
 
 ### 계정 로그아웃
-추가를 마쳤으면 접속을 끊고 나온다.
+추가를 마쳤으면 접속을 끊고 나옵니다
 ```shell
 exit
 ```
 
 ### 임시 sudo 계정으로 접속
-임시로 만든 sudo 계정으로 서버에 다시 접속한다.  
+임시로 만든 sudo 계정으로 서버에 다시 접속합니다.  
 ```shell
 ssh temp_user@192.168.0.1
 ```
 
 ### 리눅스 유저명 변경
-서버에 임시 sudo 계정으로 접속하면 다음 명령어를 실행한다. 다음 두 명령을 실행하고나면 유저명과 홈디렉토리명이 변경된다.
+서버에 임시 sudo 계정으로 접속하면 다음 명령어를 실행합니다. 다음 두 명령을 실행하고나면 유저명과 홈디렉토리명이 변경됩니다.
 ```shell
 sudo usermod -l 변경_유저명 기존_유저명
 sudo usermod -d /home/변경_유저명 -m 변경_유저명
@@ -64,13 +59,13 @@ sudo usermod -d /home/irostub -m irostub
 ```
 
 ### 유저의 그룹 변경
-ubuntu 그룹명을 변경하는 유저명의 그룹으로 바꾼다.
+ubuntu 그룹명을 변경하는 유저명의 그룹으로 바꿉니다.
 ```shell
 sudo groupmod -n irostub ubuntu
 ```
 
 ### 임시 sudo 계정 로그아웃
-리눅스 유저명 변경 작업을 마쳤다면 임시 sudo 계정을 삭제해주기 위해 접속을 끊고 나온다.
+리눅스 유저명 변경 작업을 마쳤다면 임시 sudo 계정을 삭제해주기 위해 접속을 끊고 나옵니다.
 ```shell
 exit
 ```
@@ -81,7 +76,7 @@ ssh irostub@192.168.0.1
 ```
 
 ### 임시로 생성한 sudo 계정 삭제
-임시로 생성한 sudo 계정을 삭제한다. 그리고 임시계정의 홈디렉토리도 제거한다.
+임시로 생성한 sudo 계정을 삭제합니다. 그리고 임시계정의 홈디렉토리도 제거합니다.
 ```shell
 sudo deluser temp_user
 sudo rm -rf /home/temp_user
@@ -93,18 +88,18 @@ sudo rm -rf /home/temp_user
 
 :::info
 
--l  유저명(로그인 아이디)를 변경할 때 사용한다.  
--d  사용자의 홈 디렉토리를 변경할 때 사용한다.  
--m  해당 옵션은 -d 옵션과 같이 사용되며, 디렉토리 변경 시 기존에 사용하던 파일과 디렉토리를 모두 옮겨줄 때 사용한다.
+-l  유저명(로그인 아이디)를 변경할 때 사용합니다.  
+-d  사용자의 홈 디렉토리를 변경할 때 사용합니다.  
+-m  해당 옵션은 -d 옵션과 같이 사용되며, 디렉토리 변경 시 기존에 사용하던 파일과 디렉토리를 모두 옮겨줄 때 사용합니다.
 
 :::
 
-A 의 로그인 아이디를 B 로 변경한다.
+A 의 로그인 아이디를 B 로 변경합니다.
 ```shell
 sudo usermod -l B A
 ```
 
-B 유저의 의 홈디렉터리를 변경한다. 추가로 모든 B의 사용하던 파일을 옮겨준다.
+B 유저의 의 홈디렉터리를 변경합니다. 추가로 모든 B의 사용하던 파일을 옮겨줍니다.
 ```shell
 sudo usermod -d /home/B -m B
 ```
@@ -112,9 +107,9 @@ sudo usermod -d /home/B -m B
 그룹 정보를 수정하는 명령
 
 ***사용한 옵션***
-> -n 그룹의 명칭을 변경할 때 사용한다.
+> -n 그룹의 명칭을 변경할 때 사용합니다.
 
-A 그룹명을 B 로 변경한다.
+A 그룹명을 B 로 변경합니다.
 
 ```shell
 groupmod -n B A

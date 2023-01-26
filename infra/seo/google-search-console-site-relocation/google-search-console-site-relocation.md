@@ -2,7 +2,7 @@
 id: google-search-console-site-relocation
 title: Google Search Console 주소 변경, 사이트 이전방법
 authors: irostub
-tags: [irostub,seo,google search console,github page,jekyll,self host,docusaurus,사이트 이전]
+tags: [irostub,2023,seo,google search console,github page,jekyll,self host,docusaurus,사이트 이전]
 keywords: [seo,google,search,console,github page,self host,jekyll,docusaurus,사이트 이전]
 last_update:
     date: 1/4/2023
