@@ -40,7 +40,7 @@ jobs:
           DISCORD_USERNAME: Roxy Deploy Start Hooker
           DISCORD_EMBEDS: |
             [    { 
-            "title": "${{github.event.repository.name}} 의 빌드가 시작되었어요!"
+            "title": "${{github.event.repository.name}} 의 빌드가 시작되었어요!",
             "author": {  "icon_url": "https://avatars.githubusercontent.com/${{ github.actor }}", "name": "${{ github.actor }}", "url": "https://github.com/${{github.actor}}" },
             "url": "https://github.com/${{github.repository}}/commit/${{github.sha}}",
             "fields": [
@@ -98,7 +98,7 @@ jobs:
         DISCORD_USERNAME: Roxy Deploy Finish Hooker
         DISCORD_EMBEDS: |
           [    { 
-          "title": "${{github.event.repository.name}} 가 배포 완료되었어요!"
+          "title": "${{github.event.repository.name}} 가 배포 완료되었어요!",
           "author": {  "icon_url": "https://avatars.githubusercontent.com/${{ github.actor }}", "name": "${{ github.actor }}", "url": "https://github.com/${{github.actor}}" },
           "url": "https://github.com/${{github.repository}}/commit/${{github.sha}}",
           "fields": [
