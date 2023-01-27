@@ -39,7 +39,7 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           DISCORD_AVATAR: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'
           DISCORD_EMBEDS: |
-            '[    { 
+            [    { 
             "author": {  "icon_url": "https://avatars.githubusercontent.com/${{ github.actor }}", "name": "${{ github.actor }}", "url": "https://github.com/${{github.actor}}" },
             "url": "https://github.com/${{github.repository}}/commit/${{github.sha}}",
             "fields": [
@@ -54,7 +54,7 @@ jobs:
             "color":1127128,
             "timestamp": "${{github.event.head_commit.timestamp}}",
             "footer":{"text": "${{github.event.head_commit.timestamp}}"}
-            }    ]'
+            }    ]
         uses: Ilshidur/action-discord@master
       - name: echo
         run: | 
