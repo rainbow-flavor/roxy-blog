@@ -14,7 +14,13 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           DISCORD_USERNAME: Roxy Deploy Hooker
-          DISCORD_EMBEDS: ${{ secrets.DISCORD_EMBED }}
+          DISCORD_EMBEDS: |
+            {
+              "embeds": [{
+                "title": ${{toJson(github.event.head_commit.message)}},
+                "description": "Hi! :grinning:"
+              }]
+            }
         uses: Ilshidur/action-discord@master
       -
         name: login to irohub
@@ -49,6 +55,12 @@ jobs:
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         DISCORD_USERNAME: Roxy Deploy Hooker
-        DISCORD_EMBEDS: ${{ secrets.DISCORD_EMBED }}
+        DISCORD_EMBEDS:  |
+            {
+              "embeds": [{
+                "title": ${{toJson(github.event.head_commit.message)}},
+                "description": "Hi! :grinning:"
+              }]
+            }
       uses: Ilshidur/action-discord@master
 
