@@ -9,7 +9,14 @@ jobs:
   image-build-push:
     runs-on: ubuntu-latest
     steps:
-      - 
+      -
+        name: deploy started, notify to discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'Roxy blog 배포가 시작되었습니다. \n배포 최종 커밋 : [${{ github.event.head_commit.message }}]'
+      -
         name: login to irohub
         uses: docker/login-action@v2
         with:
@@ -37,4 +44,13 @@ jobs:
         password: ${{ secrets.MASTER_PASSWORD }}
         port: ${{ secrets.MASTER_PORT }}
         script: cd ${{ secrets.ROXY_DEP_PATH }} && ${{ secrets.ROXY_DEP }}
+    -
+      name: deploy finish, notify to discord
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        DISCORD_USERNAME:
+
+      uses: Ilshidur/action-discord@master
+      with:
+        args: 'Roxy blog 배포가 완료되었습니다. \n배포 최종 커밋 : [${{ github.event.head_commit.message }}]'
 
