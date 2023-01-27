@@ -3,7 +3,7 @@ import styles from './styles.module.css';
 import clsx from 'clsx';
 
 const Toggle = ({ on = false, onClick }) => {
-    const [isOn, setIsOn] = useState(false);
+    const [isOn, setIsOn] = useState(on);
 
     const handleClick = () => {
         setIsOn((prev) => !prev);
