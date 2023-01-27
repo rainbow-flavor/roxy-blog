@@ -13,11 +13,17 @@ jobs:
         name: deploy started, notify to discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          DISCORD_USERNAME: Roxy Deploy Hooker
           DISCORD_EMBEDS: |
             {
-              "title": "Hello!",
-              "description": "Hi! :grinning:"
+              "content": null,
+              "embeds": [
+                {
+                  "title": "Hello!",
+                  "description": "Hi! :grinning:",
+                  "color": null
+                }
+              ],
+              "attachments": []
             }
         uses: Ilshidur/action-discord@master
       -
@@ -52,11 +58,17 @@ jobs:
       name: deploy finish, notify to discord
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        DISCORD_USERNAME: Roxy Deploy Hooker
         DISCORD_EMBEDS:  |
           {
-            "title": "Hello!",
-            "description": "Hi! :grinning:"
+            "content": null,
+            "embeds": [
+              {
+                "title": "Hello!",
+                "description": "Hi! :grinning:",
+                "color": null
+              }
+            ],
+            "attachments": []
           }
       uses: Ilshidur/action-discord@master
 
