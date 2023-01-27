@@ -16,10 +16,8 @@ jobs:
           DISCORD_USERNAME: Roxy Deploy Hooker
           DISCORD_EMBEDS: |
             {
-              "embeds": [{
-                "title": ${{toJson(github.event.head_commit.message)}},
-                "description": "Hi! :grinning:"
-              }]
+              "title": "Hello!",
+              "description": "Hi! :grinning:"
             }
         uses: Ilshidur/action-discord@master
       -
@@ -56,11 +54,9 @@ jobs:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         DISCORD_USERNAME: Roxy Deploy Hooker
         DISCORD_EMBEDS:  |
-            {
-              "embeds": [{
-                "title": ${{toJson(github.event.head_commit.message)}},
-                "description": "Hi! :grinning:"
-              }]
-            }
+          {
+            "title": "Hello!",
+            "description": "Hi! :grinning:"
+          }
       uses: Ilshidur/action-discord@master
 
