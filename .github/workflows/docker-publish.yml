@@ -6,7 +6,7 @@ on:
       - 'master'
 
 jobs:
-  Discord:
+  discord:
     runs-on: ubuntu-latest
     name: Discord Notifier
     #if: "contains(github.event.head_commit.message, '[skip ci]')"
@@ -34,19 +34,19 @@ jobs:
       - run: echo $SHA
         env: 
           SHA: ${{ env.SHA }}
-      - name: Discord notification
+      - name: build start notify to Discord notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          DISCORD_AVATAR: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'
+          DISCORD_USERNAME: Roxy Deploy Start Hooker
           DISCORD_EMBEDS: |
             [    { 
+            "title": "${{github.event.repository.name}} 의 빌드가 시작되었어요!"
             "author": {  "icon_url": "https://avatars.githubusercontent.com/${{ github.actor }}", "name": "${{ github.actor }}", "url": "https://github.com/${{github.actor}}" },
             "url": "https://github.com/${{github.repository}}/commit/${{github.sha}}",
             "fields": [
             { "name": "Repository", "value": "[${{github.event.repository.name}}](${{github.event.repository.clone_url}})", "inline": true },
             { "name": "Branch", "value": "[${{github.ref_name}}](https://github.com/${{github.repository}}/tree/${{github.ref_name}})", "inline": true },
             { "name": "Event", "value": "${{github.event_name}}", "inline": true },
-            { "name": "Job", "value": "${{github.job}}", "inline": true },
             { "name": "Commit Message", "value": "[${{ env.SHA }}](https://github.com/${{github.repository}}/commit/${{github.sha}}) - `${{github.event.head_commit.message}}`" },
             { "name": "Changed Files", "value": "${{ steps.changed-files.outputs.all_changed_files }}" },
             { "name": "Author", "value": "[${{github.event.head_commit.author.name}}](https://github.com/${{github.actor}})" }
@@ -61,6 +61,7 @@ jobs:
           echo ${{github.event_name}}
 
   image-build-push:
+    needs: discord
     runs-on: ubuntu-latest
     steps:
       -
@@ -77,7 +78,7 @@ jobs:
           push: true
           tags: ${{ secrets.IROHUB_URL }}/roxy-blog:latest
   
-  reload:
+  deploy-and-reload:
     needs: image-build-push
     name: Deploy
     runs-on: ubuntu-latest
@@ -91,4 +92,30 @@ jobs:
         password: ${{ secrets.MASTER_PASSWORD }}
         port: ${{ secrets.MASTER_PORT }}
         script: cd ${{ secrets.ROXY_DEP_PATH }} && ${{ secrets.ROXY_DEP }}
+    - name: deploy finish notify to Discord notification
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        DISCORD_USERNAME: Roxy Deploy Finish Hooker
+        DISCORD_EMBEDS: |
+          [    { 
+          "title": "${{github.event.repository.name}} 가 배포 완료되었어요!"
+          "author": {  "icon_url": "https://avatars.githubusercontent.com/${{ github.actor }}", "name": "${{ github.actor }}", "url": "https://github.com/${{github.actor}}" },
+          "url": "https://github.com/${{github.repository}}/commit/${{github.sha}}",
+          "fields": [
+          { "name": "Repository", "value": "[${{github.event.repository.name}}](${{github.event.repository.clone_url}})", "inline": true },
+          { "name": "Branch", "value": "[${{github.ref_name}}](https://github.com/${{github.repository}}/tree/${{github.ref_name}})", "inline": true },
+          { "name": "Event", "value": "${{github.event_name}}", "inline": true },
+          { "name": "Job", "value": "${{github.job}}", "inline": true },
+          { "name": "Commit Message", "value": "[${{ env.SHA }}](https://github.com/${{github.repository}}/commit/${{github.sha}}) - `${{github.event.head_commit.message}}`" },
+          { "name": "Changed Files", "value": "${{ steps.changed-files.outputs.all_changed_files }}" },
+          { "name": "Author", "value": "[${{github.event.head_commit.author.name}}](https://github.com/${{github.actor}})" }
+          ],
+          "color":1127128,
+          "timestamp": "${{github.event.head_commit.timestamp}}",
+          "footer":{"text": "${{github.event.head_commit.timestamp}}"}
+          }    ]
+      uses: Ilshidur/action-discord@master
+    - name: echo
+      run: | 
+        echo ${{github.event_name}}
 
