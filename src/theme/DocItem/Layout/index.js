@@ -34,6 +34,8 @@ function useDocTOC() {
 }
 export default function DocItemLayout({ children }) {
     const docTOC = useDocTOC();
+    const isPage = !docTOC.mobile && !docTOC.desktop;
+
     return (
         <div className="row">
             <div className={clsx('col', !docTOC.hidden && styles.docItemCol)}>
@@ -47,7 +49,7 @@ export default function DocItemLayout({ children }) {
                         <DocItemFooter />
                     </article>
                     <DocItemPaginator />
-                    <Comment />
+                    {!isPage && <Comment />}
                 </div>
             </div>
 
