@@ -1,0 +1,24 @@
+.container {
+    margin-bottom: 1.5em;
+}
+
+.editorContainer {
+    overflow: hidden;
+    padding: 10px 0;
+    border-radius: 6px;
+}
+
+.outputContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.submitEditButton {
+    width: auto;
+    padding: 8px;
+    border-radius: 8px;
+    background: var(--ifm-color-primary);
+
+}
