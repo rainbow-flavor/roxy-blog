@@ -1,6 +1,6 @@
 const config = {
     server: {
-        judge: 'http://runner.iro.ooo',
+        judge: 'https://runner.iro.ooo',
         api: 'https://roxy.iro.ooo/api/v1',
     },
 };
