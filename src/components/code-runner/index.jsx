@@ -7,6 +7,8 @@ import { LANGUAGE_PARAMS } from './data';
 import useInterval from '../../hooks/use-interval';
 import config from '../../config';
 
+import Loading from '../../../static/img/loading_light.svg';
+
 const CodeRunner = ({ codeString = '// comment', language = 'javascript' }) => {
     const [value, setValue] = useState(codeString);
     const [token, setToken] = useState('');
@@ -93,9 +95,16 @@ const CodeRunner = ({ codeString = '// comment', language = 'javascript' }) => {
                         )}
                         onClick={submitCode}
                     >
-                        {isLoading ? 'Loading...' : 'Run'}
+                        {isLoading ? (
+                            <div className={styles.iconWrapper}>
+                                <Loading />
+                            </div>
+                        ) : (
+                            'Run'
+                        )}
                     </button>
                 </h3>
+
                 <Editor
                     language="terminal"
                     theme="vs-dark"
