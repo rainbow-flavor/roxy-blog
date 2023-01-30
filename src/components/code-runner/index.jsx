@@ -53,10 +53,14 @@ const CodeRunner = ({ codeString = '// comment', language = 'javascript' }) => {
         );
 
         const newStringArr = [];
-        newStringArr.push(`연산 시간 : ${data.time}ms\n`);
-        newStringArr.push(`메모리 : ${data.memory}\n`);
-        newStringArr.push(data.stdout);
-        newStringArr.push(data.compile_output);
+        newStringArr.push(
+            `연산 시간 : ${data.time}ms\n`,
+            `메모리 : ${data.memory}\n`,
+            data.compile_output,
+            data.message,
+            data.stderr,
+            data.stdout
+        );
 
         setResult(newStringArr.join(''));
         setToken('');
