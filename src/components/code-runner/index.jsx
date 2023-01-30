@@ -11,9 +11,12 @@ const CodeRunner = ({ codeString = '// comment', language = 'javascript' }) => {
     const [value, setValue] = useState(codeString);
     const [token, setToken] = useState('');
     const [result, setResult] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const submitCode = async () => {
+        if (isLoading) return;
         try {
+            setIsLoading(true);
             const { data } = await api.post(
                 `${config.server.judge}/submissions`,
                 {
@@ -31,6 +34,7 @@ const CodeRunner = ({ codeString = '// comment', language = 'javascript' }) => {
             setToken(data.token);
         } catch (err) {
             console.error(err);
+            setIsLoading(false);
         }
     };
 
@@ -50,9 +54,11 @@ const CodeRunner = ({ codeString = '// comment', language = 'javascript' }) => {
         newStringArr.push(`연산 시간 : ${data.time}ms\n`);
         newStringArr.push(`메모리 : ${data.memory}\n`);
         newStringArr.push(data.stdout);
+        newStringArr.push(data.compile_output);
 
         setResult(newStringArr.join(''));
         setToken('');
+        setIsLoading(false);
     };
 
     useInterval(
@@ -87,7 +93,7 @@ const CodeRunner = ({ codeString = '// comment', language = 'javascript' }) => {
                         )}
                         onClick={submitCode}
                     >
-                        Run
+                        {isLoading ? 'Loading...' : 'Run'}
                     </button>
                 </h3>
                 <Editor
