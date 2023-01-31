@@ -164,6 +164,26 @@ const config = {
     themeConfig:
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         {
+            algolia: {
+                // 알골리아에서 제공한 appId를 사용하세요.
+                appId: 'STBZ15YGTR',
+
+                // 공개 API 키: 커밋해도 문제가 생기지 않습니다.
+                apiKey: '8fc5bdaa7a1b2e52c1c00182a11a7ba7',
+
+                indexName: 'roxy-iro',
+
+                // 옵션: 아래 문서를 참고
+                contextualSearch: true,
+
+                // 옵션: 알골리아 검색 파라미터
+                searchParameters: {},
+
+                // 옵션: 기본적으로 활성화된 검색 페이지 경로(비활성화하려면 `false`로 설정)
+                searchPagePath: 'search',
+
+                //... 다른 알골리아 파라미터
+            },
             announcementBar: {
                 id: 'announcementBar-2',
                 content:
@@ -234,8 +254,8 @@ const config = {
                         label: 'Blogs',
                         position: 'left',
                         items: [
-                            { to: '/irostub', label: 'Irostub'},
-                            { to: '/hank', label: 'Hank'},
+                            { to: '/irostub', label: 'Irostub' },
+                            { to: '/hank', label: 'Hank' },
                         ],
                     },
                     {
