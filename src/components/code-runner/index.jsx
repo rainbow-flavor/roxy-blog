@@ -54,8 +54,8 @@ const CodeRunner = ({ codeString = '// comment', language = 'javascript' }) => {
 
         const newStringArr = [];
         newStringArr.push(
-            `연산 시간 : ${data.time}ms\n`,
-            `메모리 : ${data.memory}\n`,
+            ...(data.time && [`연산 시간 : ${data.time}ms\n`]),
+            ...(data.memory && [`메모리 : ${data.memory}kB\n`]),
             data.compile_output,
             data.message,
             data.stderr,
