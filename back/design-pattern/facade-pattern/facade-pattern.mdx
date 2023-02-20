@@ -29,51 +29,11 @@ last_update:
 물론, 감춘 만큼 퍼사드 API 를 잘 정리하고 이에 대한 사용 방법, 명세 등을 제공해야하겠습니다.
 
 ## 예제 코드
-import CodeRunner from "../../../src/components/code-runner";
-import {LANGUAGE_TYPE} from "../../../src/components/code-runner/data";
 
-<CodeRunner codeString={
-`import java.util.Date;
-import java.util.Random;
-import java.util.UUID;
-public class Main {
-    public static void main(String[] args) {
-        CodeRunnerFacade facade = new CodeRunnerFacade();
-        facade.runCode("this is code");
-    }
-}
-class CodeRunnerFacade{
-    Container container;
-    String generatedId = UUID.randomUUID().toString();
-    CodeRunnerFacade(){
-        container = new Container(new Runner(), generatedId);
-    }
-    public String runCode(String code){
-        if(container.checkContainerId(generatedId)){
-            return container.entryPoint(code);
-        }
-        throw new RuntimeException("존재하지 않는 컨테이너");
-    }
-}
-class Runner{
-    String run(String code) {
-        System.out.println("코드가 실행되었습니다. " + code);
-        return "ok";
-    }
-}
-class Container{
-    Runner runner;
-    String containerId;
-    Container(Runner runner, String containerId){
-        this.runner = runner;
-        this.containerId = containerId;
-    }
-    boolean checkContainerId(String token){
-        return token.equals(containerId);
-    }
-    String entryPoint(String code){
-        return runner.run(code);
-    }
-}
-`
-}  language={LANGUAGE_TYPE.JAVA}/>
+
+
+import CodeRunner from '../../../src/components/code-runner';
+import { LANGUAGE_TYPE } from '../../../src/components/code-runner/data';
+import code from './code';
+
+<CodeRunner codeString={code}  language={LANGUAGE_TYPE.JAVA}/>
