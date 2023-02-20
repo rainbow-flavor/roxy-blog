@@ -4,11 +4,14 @@ title: runner test1
 ---
 
 
-
 import { LANGUAGE_TYPE } from '../../src/components/code-runner/data';
 import CodeRunner from '../../src/components/code-runner';
+import code from './code.js';
 
-<CodeRunner language={LANGUAGE_TYPE.JAVASCRIPT}/>
+<CodeRunner codeString={code} language={LANGUAGE_TYPE.JAVASCRIPT}/>
+
+
+
 
 Hello world
 

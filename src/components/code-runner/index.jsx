@@ -1,28 +1,37 @@
 import React, { useState } from 'react';
-import Editor from '@monaco-editor/react';
 import api from '../../lib/api';
 import styles from './styles.module.css';
 import clsx from 'clsx';
 import { LANGUAGE_PARAMS } from './data';
 import useInterval from '../../hooks/use-interval';
 import config from '../../config';
-
 import Loading from '../../../static/img/loading_light.svg';
+import Editor from '@monaco-editor/react';
+
+function utf8_to_b64(str) {
+    return btoa(unescape(encodeURIComponent(str)));
+}
+
+function b64_to_utf8(str) {
+    return decodeURIComponent(escape(atob(str)));
+}
 
 const CodeRunner = ({ codeString = '// comment', language = 'javascript' }) => {
     const [value, setValue] = useState(codeString);
     const [token, setToken] = useState('');
     const [result, setResult] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [retry, setRetry] = useState(0);
 
     const submitCode = async () => {
         if (isLoading) return;
         try {
             setIsLoading(true);
+
             const { data } = await api.post(
                 `${config.server.judge}/submissions`,
                 {
-                    source_code: btoa(unescape(encodeURIComponent(value))),
+                    source_code: utf8_to_b64(value),
                     language_id: LANGUAGE_PARAMS[language],
                 },
                 {
@@ -42,7 +51,7 @@ const CodeRunner = ({ codeString = '// comment', language = 'javascript' }) => {
 
     const showCompileResult = async () => {
         const { data } = await api.get(
-            `${config.server.judge}/submissions/${token}`,
+            `${config.server.judge}/submissions/${token}?base64_encoded=true`,
             {},
             {
                 params: {
@@ -59,10 +68,10 @@ const CodeRunner = ({ codeString = '// comment', language = 'javascript' }) => {
         newStringArr.push(
             time,
             memory,
-            data.compile_output,
+            data.compile_output ? b64_to_utf8(data.compile_output) : '',
             data.message,
             data.stderr,
-            data.stdout
+            data.stdout ? b64_to_utf8(data.stdout) : ''
         );
 
         setResult(newStringArr.join(''));
@@ -72,7 +81,16 @@ const CodeRunner = ({ codeString = '// comment', language = 'javascript' }) => {
 
     useInterval(
         async () => {
-            await showCompileResult();
+            try {
+                await showCompileResult();
+                setRetry(0);
+            } catch (err) {
+                if (retry <= 3) {
+                    setToken('');
+                }
+                console.error(err);
+                setRetry((prev) => prev + 1);
+            }
         },
         token ? 2000 : null
     );
