@@ -64,7 +64,7 @@ last_update:
 
 `src` 폴더에서는 공용적으로 사용되고 재사용되는 모듈, UI, Hooks, third party, 함수, 상수, 타입 등이 관리됩니다.
 
-# 📂 pages
+## 📂 pages
 
 ```
 📂 pages
@@ -74,11 +74,11 @@ last_update:
 ┃     ┣ 📂 features
 ┃     ┣ 📂 hooks
 ┃     ┗ 📂 ui
-┣ 📂 **src**
-┃  ┗ 📂 **app**
+┣ 📂 src
+┃  ┗ 📂 app
 ```
 
-## 1. app
+### pages/app
 
 ```tsx
 const App = ({ children }: Props) => {
@@ -104,7 +104,7 @@ pages의 app 폴더에서는 Next.js가 라우팅하는 페이지 전체에 사�
 - Footer
 - 외부 context (언어, 인증, 블록체인 연결)
 
-## 2. domain
+### pages/domain
 
 ```
 📂 domain
@@ -120,7 +120,7 @@ pages의 app 폴더에서는 Next.js가 라우팅하는 페이지 전체에 사�
 
 여기서 크게 page와 src로 다시 한번 분리합니다.
 
-### **index.page.tsx /** [dynamic].page.tsx
+#### 1. pages/domain/(index.page.tsx / [dynamic].page.tsx)
 
 ```tsx
 // index.page.tsx
@@ -154,7 +154,7 @@ page.tsx는 최상단에서 렌더링되며 주로 레이아웃과 ErrorBoundary
 
 Next.js의 server-side 함수로직이 들어가거나 private한 라우팅을 관리하는 코드를 작성합니다.
 
-### src
+#### 2. pages/domain/src
 
 > 😝NFTReward의 경우  src/features 폴더로 이동됩니다.
 >
@@ -277,7 +277,7 @@ export default NFTRewardItem
 
 ---
 
-# 📂 api
+## 📂 api
 
 ```tsx
 // ~/api/nft.ts
@@ -297,9 +297,6 @@ export const getNFTName = async (name: string) => {
 - api에 요청할 때 사용되는 parameter와 body, URL 등을 명시해놓은 함수
 - `api` : lib/api의 axios 모듈 사용
 - `QueryKey` : constatns/query.ts의 상수 객체 사용
-
-## 규칙
-
 - URL은 constatns/query.ts의 상수객체에 함수의 이름을 `Uppercase` 한 것으로 선언해야 합니다.
 
 😀정리
@@ -320,13 +317,13 @@ export const setNFTName = async () => {
 
 ---
 
-# 📂 **assets**
+## 📂 assets
 
 프로덕트 내에서 로컬로 관리되는 이미지, svg 아이콘 등 에셋을 관리하고 있습니다.
 
 ---
 
-# 📂 **atoms**
+## 📂 atoms
 
 recoil을 사용한 전역 상태관리와 관련 selector 등은 해당 폴더에서 관리하고 있습니다.
 
@@ -343,7 +340,7 @@ export const userState = atom<User | null>({
 
 ---
 
-# 📂 **common**
+## 📂 common
 
 공용적으로 재사용되는 컴포넌트들을 관리하고 있습니다.
 
@@ -400,7 +397,7 @@ export default AsyncBoundary
 
 ---
 
-# 📂 **constants**
+## 📂 constants
 
 ```tsx
 export const enum InternalPath {
@@ -430,7 +427,7 @@ export const API_KEY =
 
 ---
 
-# 📂 **container**
+## 📂 container
 
 ```tsx
 const RedirectContainer = ({ redirect, children }: Props) => {
@@ -453,7 +450,7 @@ export default RedirectContainer
 
 ---
 
-# 📂 contracts
+## 📂 contracts
 
 ```tsx
 import ContractABI from './abi/nft.abi.json'
@@ -491,7 +488,7 @@ export default NFTContract
 
 ---
 
-# 📂 hooks
+## 📂 hooks
 
 ```tsx
 // ~/hooks/useToggle.ts
@@ -527,7 +524,7 @@ Custom useQuery 파일들은 한 단계 더 들어가 queries라는 폴더에 �
 
 ---
 
-# 📂 layouts
+## 📂 layouts
 
 ```tsx
 const SectionLayout = ({ children, ...SectionTitleProps }: Props) => {
@@ -544,7 +541,7 @@ const SectionLayout = ({ children, ...SectionTitleProps }: Props) => {
 
 ---
 
-# 📂 lib
+## 📂 lib
 
 ```tsx
 import axios from 'axios'
@@ -566,19 +563,19 @@ Third party 모듈들의 config와 관련 유틸 함수들은 해당 폴더에�
 
 ---
 
-# 📂 styles
+## 📂 styles
 
 글로벌 스타일, Mixin 등 공용, 재사용 스타일들을 관리합니다.
 
 ---
 
-# 📂 types
+## 📂 types
 
 공통으로 쓰이는 타입부터 도메인 타입까지 interface, type은 해당 폴더에서 관리됩니다.
 
 ---
 
-# 📂 utils
+## 📂 utils
 
 데이터 타입을 변환하는데 쓰이는 순수함수들은 utils에서 관리되고 있습니다.
 
