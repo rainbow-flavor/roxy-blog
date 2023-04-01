@@ -1,5 +1,5 @@
 ---
-id: create-design-system
+id: before-design-system
 title: 디자인 시스템을 시작하기 전에
 authors: hank
 tags: [react,design system, 디자인 시스템, 스토리북, 피그마, ui]
