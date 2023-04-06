@@ -17,11 +17,11 @@ const FeatureList = [
     },
     {
         title: 'Support Hank',
-        name: 'ranjafunc',
+        name: 'hank-beta',
         description: (
             <>
                 Give me a star at here <br />
-                <Link href="https://github.com/ranjafunc">GitHub</Link>
+                <Link href="https://github.com/hank-beta">GitHub</Link>
             </>
         ),
     },

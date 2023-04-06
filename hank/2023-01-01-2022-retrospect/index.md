@@ -163,7 +163,7 @@ UI 개발뿐만 아니라 전체적으로 다른 사람이 사용할 걸 고려�
 
 ![Untitled](./img/regret_9.png)
 
-[https://github.com/ranjafunc/client-folder-structure](https://github.com/ranjafunc/client-folder-structure)
+[https://github.com/hank-beta/client-folder-structure](https://github.com/hank-beta/client-folder-structure)
 
 재사용성을 고려하기 전에 먼저 인지되었던 것은 재사용할 수 없는 컴포넌트는 생길 수 밖에 없다는 것이었다.
 
