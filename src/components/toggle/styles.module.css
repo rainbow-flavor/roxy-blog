@@ -1,11 +1,22 @@
 .container {
     width: 34px;
     padding: 4px ;
-    margin-left: 4px;
     border-radius: 30px;
     border: 2px solid #ccd0d5;
     cursor: pointer;
     box-sizing: border-box;
+}
+
+@media screen and (max-width: 996px) {
+    .container {
+        margin-right: 134px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        margin-right: 40px;
+    }
 }
 
 .toggle {

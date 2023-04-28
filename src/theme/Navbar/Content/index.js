@@ -58,12 +58,12 @@ export default function NavbarContent() {
                 <>
                     <NavbarItems items={rightItems} />
 
-                    <NavbarColorModeToggle className={styles.colorModeToggle} />
-
                     <Toggle
                         on={isStrict}
                         onClick={() => setIsStrict((prev) => !prev)}
                     />
+
+                    <NavbarColorModeToggle className={styles.colorModeToggle} />
 
                     {!searchBarItem && (
                         <NavbarSearch>
