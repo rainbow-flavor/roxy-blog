@@ -22,10 +22,25 @@ const config = {
     favicon: 'img/favicon.ico',
 
     // whatap agent config
-    scripts: [
+    headTags: [
         {
+            tagName: 'script',
             src: 'https://repo.whatap-browser-agent.io/rum/prod/v1/whatap-browser-agent.js',
-            async: false,
+        },
+        {
+            tagName: 'script',
+            attributes: {
+                type: 'text/javascript',
+            },
+            innerHTML: `
+                window.WhatapBrowserAgent = {
+                    config: {
+                        projectAccessKey: 'x4te823r4ri9p-x107ca46a3pivo-z16j3crpakvotc',
+                        pcode: 30152,
+                        sampleRate: 100,
+                    },
+                };
+        `,
         },
     ],
 

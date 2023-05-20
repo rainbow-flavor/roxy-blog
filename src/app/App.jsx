@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Head from '@docusaurus/Head';
 
 const App = ({ children }) => {
     useEffect(() => {
@@ -15,7 +16,12 @@ const App = ({ children }) => {
         document.body.appendChild(script);
     }, []);
 
-    return <>{children}</>;
+    return (
+        <>
+            <Head></Head>
+            {children}
+        </>
+    );
 };
 
 export default App;
