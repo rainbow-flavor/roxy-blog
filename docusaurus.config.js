@@ -20,6 +20,12 @@ const config = {
     onBrokenMarkdownLinks: 'warn',
     staticDirectories: ['public', 'static'],
     favicon: 'img/favicon.ico',
+    scripts: [
+        {
+            src: 'https://repo.whatap-browser-agent.io/rum/prod/v1/whatap-browser-agent.js',
+            async: false,
+        },
+    ],
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
     organizationName: 'https://github.com/rainbow-flavor',
