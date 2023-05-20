@@ -25,10 +25,6 @@ const config = {
     headTags: [
         {
             tagName: 'script',
-            src: 'https://repo.whatap-browser-agent.io/rum/prod/v1/whatap-browser-agent.js',
-        },
-        {
-            tagName: 'script',
             attributes: {
                 type: 'text/javascript',
             },
@@ -41,6 +37,12 @@ const config = {
                     },
                 };
         `,
+        },
+        {
+            tagName: 'script',
+            attributes: {
+                src: 'https://repo.whatap-browser-agent.io/rum/prod/v1/whatap-browser-agent.js',
+            },
         },
     ],
 
