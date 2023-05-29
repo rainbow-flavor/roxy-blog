@@ -69,8 +69,8 @@ const CodeRunner = ({ codeString = '// comment', language = 'javascript' }) => {
             time,
             memory,
             data.compile_output ? b64_to_utf8(data.compile_output) : '',
-            data.message,
-            data.stderr,
+            data.message ? b64_to_utf8(data.message) : '',
+            data.stderr ? b64_to_utf8(data.stderr) : '',
             data.stdout ? b64_to_utf8(data.stdout) : ''
         );
 
