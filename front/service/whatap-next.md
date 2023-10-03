@@ -7,6 +7,8 @@ keywords:
 - next.js monitoring
 - 와탭랩스
 - whatap
+- Next.js whatap
+- Next.js 모니터링
 - Next.js 와탭랩스
 - Next.js 와탭랩스 모니터링
 - Next.js 와탭랩스 에이전트 설치

@@ -2,7 +2,7 @@
 id: next-auth-introduction
 title: 💻 NextAuth Introduction
 authors: Hank
-tags: [Hank, Next.js, Next-auth, Authorization,]
+tags: [Hank, Next.js, Next-auth, Authorization]
 keywords:
 - Next-auth
 - next.js
@@ -10,7 +10,7 @@ keywords:
 - JWT
 ---
 
-# 💻 NextAuth Introduction
+# NextAuth Introduction
 NextAuth에는 어떤 기능이 있으며 왜 사용하는지, 인증 방식 설정을 설명드리고자 합니다.
 
 ## 🙃 Why NextAuth??
