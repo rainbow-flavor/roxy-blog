@@ -1,0 +1,87 @@
+---
+id: wagmi-nextjs-managing-contract
+title: 5편 - 블록체인 비동기 상태 관리하기 
+authors: hank
+tags: [dApp,ethers,wagmi,react,next.js,web3,blockchain,smart-contract]
+keywords: [wagmi,next.js,메타마스크,폴리곤,스마트컨트랙트 연결하기, react-query, web3]
+last_update:
+    date: 10/4/2023
+    author: hank
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+
+
+ethers를 통해서 오는 데이터는 AJAX와 똑같이 Promise로 리턴됩니다. 모든 Promise는 react-query와 같은 비동기 상태 라이브러리를 활용하여 가독성 좋게 리팩토링할 수 있습니다.
+이전 글에서 선언한 컨트랙트와 컴포넌트를 다시 작성해보겠습니다.
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Before">
+```
+
+```js
+const Contract = () => {
+  const [tokenName, setTokenName] = useState("");
+
+  const onClick = async () => {
+    const contract = new ChainLinkContract();
+    const name = await contract.name();
+    setTokenName(name);
+  };
+
+  return (
+    <div>
+      <button onClick={onClick}>Get TokenName</button>
+      <div>TokenName: {tokenName}</div>
+    </div>
+  );
+};
+
+export default Contract;
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="useTokenNameQuery.ts">
+```
+```ts
+const useTokenNameQuery = () => {
+    const getTokenName = async () => {
+        const contract = new ChainLinkContract();
+        return await contract.name();
+    }
+
+    return useQuery(["CHAIN_LINK_CONTRACT_NAME"], getTokenName)
+}
+```
+
+```mdx-code-block
+</TabItem>
+
+
+
+<TabItem value="After">
+```
+
+```tsx
+const Contract = () => {
+  const { data: tokenName, refetch } = useTokenNameQuery()
+
+  return (
+    <div>
+      <button onClick={refetch}>Get TokenName</button>
+      <div>TokenName: {tokenName}</div>
+    </div>
+  );
+};
+
+export default Contract;
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
