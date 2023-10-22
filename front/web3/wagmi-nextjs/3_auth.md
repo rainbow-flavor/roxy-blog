@@ -35,7 +35,7 @@ last_update:
 :::info next-auth
 현재 시리즈는 dApp 개발 과정을 위한 컨셉이어서 next-auth에 대해 자세히 얘기하지 않고 있습니다.
 
-next-auth에 대한 자세한 글은 [Next-auth 소개글](/front/next-auth/next-auth-introduction)를 한번 참고해주세요!
+next-auth에 대한 자세한 글은 [Next-auth 소개글](/front/next-js/next-auth-introduction)를 한번 참고해주세요!
 :::
 
 ```bash
