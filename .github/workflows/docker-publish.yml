@@ -6,62 +6,62 @@ on:
       - 'master'
 
 jobs:
-  discord:
-    runs-on: ubuntu-latest
-    name: Discord Notifier
-    #if: "contains(github.event.head_commit.message, '[skip ci]')"
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v34
-        with:
-          separator: "\n"
-      - name: List all changed files
-        run: |
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            echo "$file was changed"
-          done
-      - uses: benjlevesque/short-sha@v2.1
-        id: short-sha
-        with:
-          length: 7
-      - run: echo $SHA
-        env: 
-          SHA: ${{ steps.short-sha.outputs.sha }}
-      - run: echo $SHA
-        env: 
-          SHA: ${{ env.SHA }}
-      - name: build start notify to Discord notification
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          DISCORD_USERNAME: Roxy Deploy Start Hooker
-          DISCORD_EMBEDS: |
-            [    { 
-            "title": "${{github.event.repository.name}} 의 빌드가 시작되었어요!",
-            "author": {  "icon_url": "https://avatars.githubusercontent.com/${{ github.actor }}", "name": "${{ github.actor }}", "url": "https://github.com/${{github.actor}}" },
-            "url": "https://github.com/${{github.repository}}/commit/${{github.sha}}",
-            "fields": [
-            { "name": "Repository", "value": "[${{github.event.repository.name}}](${{github.event.repository.clone_url}})", "inline": true },
-            { "name": "Branch", "value": "[${{github.ref_name}}](https://github.com/${{github.repository}}/tree/${{github.ref_name}})", "inline": true },
-            { "name": "Event", "value": "${{github.event_name}}", "inline": true },
-            { "name": "Commit Message", "value": "[${{ env.SHA }}](https://github.com/${{github.repository}}/commit/${{github.sha}}) - `${{github.event.head_commit.message}}`" },
-            { "name": "Changed Files", "value": "${{ steps.changed-files.outputs.all_changed_files }}" },
-            { "name": "Author", "value": "[${{github.event.head_commit.author.name}}](https://github.com/${{github.actor}})" }
-            ],
-            "color":11004856,
-            "timestamp": "${{github.event.head_commit.timestamp}}",
-            "footer":{"text": "${{github.event.head_commit.timestamp}}"}
-            }    ]
-        uses: Ilshidur/action-discord@master
-      - name: echo
-        run: | 
-          echo ${{github.event_name}}
+  # discord:
+  #   runs-on: ubuntu-latest
+  #   name: Discord Notifier
+  #   #if: "contains(github.event.head_commit.message, '[skip ci]')"
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+  #     - name: Get changed files
+  #       id: changed-files
+  #       uses: tj-actions/changed-files@v34
+  #       with:
+  #         separator: "\n"
+  #     - name: List all changed files
+  #       run: |
+  #         for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+  #           echo "$file was changed"
+  #         done
+  #     - uses: benjlevesque/short-sha@v2.1
+  #       id: short-sha
+  #       with:
+  #         length: 7
+  #     - run: echo $SHA
+  #       env: 
+  #         SHA: ${{ steps.short-sha.outputs.sha }}
+  #     - run: echo $SHA
+  #       env: 
+  #         SHA: ${{ env.SHA }}
+  #     - name: build start notify to Discord notification
+  #       env:
+  #         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+  #         DISCORD_USERNAME: Roxy Deploy Start Hooker
+  #         DISCORD_EMBEDS: |
+  #           [    { 
+  #           "title": "${{github.event.repository.name}} 의 빌드가 시작되었어요!",
+  #           "author": {  "icon_url": "https://avatars.githubusercontent.com/${{ github.actor }}", "name": "${{ github.actor }}", "url": "https://github.com/${{github.actor}}" },
+  #           "url": "https://github.com/${{github.repository}}/commit/${{github.sha}}",
+  #           "fields": [
+  #           { "name": "Repository", "value": "[${{github.event.repository.name}}](${{github.event.repository.clone_url}})", "inline": true },
+  #           { "name": "Branch", "value": "[${{github.ref_name}}](https://github.com/${{github.repository}}/tree/${{github.ref_name}})", "inline": true },
+  #           { "name": "Event", "value": "${{github.event_name}}", "inline": true },
+  #           { "name": "Commit Message", "value": "[${{ env.SHA }}](https://github.com/${{github.repository}}/commit/${{github.sha}}) - `${{github.event.head_commit.message}}`" },
+  #           { "name": "Changed Files", "value": "${{ steps.changed-files.outputs.all_changed_files }}" },
+  #           { "name": "Author", "value": "[${{github.event.head_commit.author.name}}](https://github.com/${{github.actor}})" }
+  #           ],
+  #           "color":11004856,
+  #           "timestamp": "${{github.event.head_commit.timestamp}}",
+  #           "footer":{"text": "${{github.event.head_commit.timestamp}}"}
+  #           }    ]
+  #       uses: Ilshidur/action-discord@master
+  #     - name: echo
+  #       run: | 
+  #         echo ${{github.event_name}}
 
   image-build-push:
-    needs: discord
+    # needs: discord
     runs-on: ubuntu-latest
     steps:
       -
