@@ -2,7 +2,7 @@ import DocCardList from '@theme/DocCardList';
 
 
 
-# Node.js 
+# Javascript
 
 
 <DocCardList />

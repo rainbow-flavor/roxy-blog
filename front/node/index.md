@@ -2,7 +2,7 @@ import DocCardList from '@theme/DocCardList';
 
 
 
-# NextAuth
+# Node.js
 
 
 <DocCardList />
