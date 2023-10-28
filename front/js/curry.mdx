@@ -1,0 +1,212 @@
+---
+id: curry
+title: 함수형 프로그래밍 - curry
+authors: hank
+tags: [curry, reduce, js, javascript, FP, functional programming, 함수형 프로그래밍]
+keywords: [함수형 프로그래밍, curry]
+last_update:
+    date: 10/28/2023
+    author: hank
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## currying
+
+함수형 프로그래밍에서 자주 언급되는 커링 기법은 다수의 인자 대신 하나의 인자를 가지는 연속된 함수들의 중첩(고차함수)을 활용합니다.
+- 함수를 값으로 다루면서 받아둔 함수를 원하는 시점에 평가시키는 함수
+
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Currying_example" label="Currying 예시">
+```
+```js
+function curry(a) {
+    return function (b) {
+    // 클로저로 a에 접근할 수 있다.
+        return a + b
+    }
+}
+
+const discounted_price = (price, percent) => {
+  return price - price * percent;
+};
+
+const curried_discounted_price = (price) => percent => {
+    return price - price * percent;
+}
+
+discounted_price(15000, 0.1) // 13500
+curried_discounted_price(15000)(0.1) // 13500
+```
+```mdx-code-block
+</TabItem>
+<TabItem value="Currying_example2" label="Currying으로 표현력 올리기">
+```
+```js
+const 일퍼할인 = curried_discounted_price(0.01);
+const 십퍼할인 = curried_discounted_price(0.1);
+
+일퍼할인(15000); // 14850
+십퍼할인(15000); // 13500
+```
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+다음 예시는 할인 가격을 구하는 함수입니다. 마지막으로 평가되는 결과물은 같지만 인자가 두개인 것과 인자가 1개인 함수가 중첩되는 차이가 있습니다.
+
+클로저로 다음 함수가 첫 함수 인자에 접근할 수 있기 때문에 다음과 같은 코드가 가능해졌습니다.
+
+코드의 표현력이 더윽 풍부해지고 세분화되고 있는 것을 느낄 수 있는데요. 다음은 쿠폰 차감을 하는 로직을 작성해보겠습니다.
+
+
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Currying_example3" label="Before">
+```
+```js
+const coupon = 100;
+
+const getPrice = (price) => {
+    return price - 0.1 * price - coupon;
+}
+
+getPrice(15000); // 13400
+```
+```mdx-code-block
+</TabItem>
+<TabItem value="Currying_example4" label="After">
+```
+```js
+const discount_price = (percent) => (price) => {
+  return price - price * percent;
+};
+
+const discount_one_percent = discount_price(0.01);
+const discount_ten_percent = discount_price(0.1);
+
+const coupon = 100;
+const minus_coupon = (price) => {
+  return price - coupon;
+};
+
+const 십퍼할인쿠폰전액차감 = (price) => {
+  return minus_coupon(discount_ten_percent(price));
+};
+
+const 일퍼할인쿠폰전액차감 = (price) => {
+  return minus_coupon(discount_one_percent(price));
+};
+
+십퍼할인쿠폰전액차감(15000) // 13400
+일퍼할인쿠폰전액차감(15000) // 14750
+```
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+연산식에서 커링 기법을 이용하여 표현을 바꿔보았습니다. 단순한 식에서도 각자의 역할을 더욱 쪼개고 세분화하여 함수로 분리했습니다. 첫 인자인 `price`를 넣고 함수가 함수를 호출하고 리턴하는 재귀적인 코드가 탄생했는데요.
+
+`minus_coupon`과 `discount_value_percent`를 보면 공통점이 있는 것을 확인할 수 있습니다.
+
+- price라는 인자를 받는다.
+- price를 연산한 값을 반환한다.
+
+이 두가지 점을 이용해서 한번 더 리팩토링해보겠습니다.
+
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Currying_example6" label="reduce">
+```
+```js
+const discount_price = (percent) => (price) => {
+  return price - price * percent;
+};
+
+const discount_one_percent = discount_price(0.01);
+const discount_ten_percent = discount_price(0.1);
+
+const coupon = 100;
+const minus_coupon = (price) => {
+  return price - coupon;
+};
+
+// reduce([순서대로 price를 연산하고 반환하는 함수 리스트])(price)
+const reduce = (...fns) => (price) => {
+    for (const fn of fns) {
+      price = fn(price);
+    }
+    return price;
+};
+
+const 십퍼할인쿠폰전액차감 = (price) => {
+    return reduce(discount_ten_percent, minus_coupon)(price);
+}
+
+const 일퍼할인쿠폰전액차감 = (price) => {
+  return reduce(discount_one_percent, minus_coupon)(price);
+};
+
+십퍼할인쿠폰전액차감(15000); // 13400
+일퍼할인쿠폰전액차감(15000); // 14750
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Currying_example7" label="Refactoring">
+```
+```js
+const _십퍼할인쿠폰전액차감 = (price) => reduce(discount_ten_percent, minus_coupon)(price);
+
+// 인자를 받아 다음 반환하는 함수 인자에 넣어준다는 것은 이렇게 줄일 수 있다는 것을 의미합니다.
+const 십퍼할인쿠폰전액차감 = reduce(discount_ten_percent, minus_coupon);
+const 일퍼할인쿠폰전액차감 = reduce(discount_one_percent, minus_coupon);
+
+십퍼할인쿠폰전액차감(15000); // 13400
+일퍼할인쿠폰전액차감(15000); // 14750
+```
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+Array에서의 reduce는 초기값을 받고 배열을 순회하면서 함수를 호출하고 반환하며 값을 누적시켜가는 함수입니다. 여기서 작성한 reduce 또한 같은 원리입니다.
+
+- 초기값 : `price`
+- 배열 : `price`를 연산하고 반환하는 함수 리스트
+
+함수의 인자(`arguments`) 또한 `iterable`이라는 점을 이용해서 함수 목록을 순회하며 값을 누적시켜가는 함수를 작성하였습니다.
+
+```js
+const 십퍼할인쿠폰전액차감 = reduce(
+    discount_ten_percent,
+    minus_coupon
+);
+
+const exchange_fee = (price) => {
+  return price + price * 0.1;
+};
+
+const 해외십퍼할인쿠폰전액차감 = reduce(
+  exchange_fee,
+  discount_ten_percent,
+  minus_coupon
+);
+
+십퍼할인쿠폰전액차감(15000); // 13400
+해외십퍼할인쿠폰전액차감(15000); // 14750
+```
+
+가독성과 유지보수가 모두 좋아진 것을 볼 수 있습니다. 함수만 추가, 제거하여도 기존 로직에서 확장 가능한 구조가 만들어졌습니다.
+
+
+## Reference
+
+- [유인동의 함수형 프로그래밍](https://www.inflearn.com/course/functional-es6/dashboard)
