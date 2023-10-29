@@ -36,7 +36,7 @@ const HomepageHeader = () => {
                 </p>
 
                 <button className="button button--secondary button--md">
-                    <Link href="/front/js/iterator" className={styles.buttonLink}>
+                    <Link href="/front/js/functional-programming/iterator" className={styles.buttonLink}>
                         글 보러가기
                     </Link>
                 </button>
