@@ -10,8 +10,6 @@ last_update:
 ---
 # 쿠버네티스 클러스터 버전 업그레이드
 
-## 시작 전에
-
 오늘은 쿠버네티스 클러스터 버전 업그레이드 하는 방법에 대해서 알아보겠습니다.
 
 우선 쿠버네티스는 여러 벤더사가 있기 때문에 다양한 업그레이드 방법이 있습니다. 대표적으로 AWS 에서 자체적으로 관리하는 EKS 같은 경우엔 [이 문서](https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/update-cluster.html)를 통해 진행할 수 있습니다.
