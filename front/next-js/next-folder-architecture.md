@@ -2,7 +2,7 @@
 id: next-folder-architecture
 title: Next.js 폴더 아키텍쳐 
 authors: Hank
-tags: [Hank, Next.js, directory architecture, 리액트, 폴더 구조, 폴더 설계]
+tags: [hank, Next.js, directory architecture, 리액트, 폴더 구조, 폴더 설계]
 keywords:
 - directory architecture
 - next.js directory architecture

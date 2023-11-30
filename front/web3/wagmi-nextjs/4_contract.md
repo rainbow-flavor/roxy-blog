@@ -2,7 +2,7 @@
 id: wagmi-nextjs-smart-contract
 title: 4편 - 스마트 컨트랙트 
 authors: hank
-tags: [dApp,ethers,wagmi,react,next.js,web3,blockchain,smart-contract]
+tags: [hank,dApp,ethers,wagmi,react,next.js,web3,blockchain,smart-contract]
 keywords: [wagmi,next.js,next-auth,메타마스크,폴리곤,스마트컨트랙트 연결하기]
 last_update:
     date: 3/3/2023

@@ -2,7 +2,7 @@
 id: create-design-system
 title: 디자인 시스템을 시작하기 전에
 authors: hank
-tags: [react,design system, 디자인 시스템, 스토리북, 피그마, ui]
+tags: [hank,react,design system, 디자인 시스템, 스토리북, 피그마, ui]
 keywords: [react,design system, 디자인 시스템, 스토리북, 피그마, ui, 디자인 시스템은 왜 필요한지]
 last_update:
     date: 3/21/2023

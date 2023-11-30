@@ -2,7 +2,7 @@
 id: next-whatap-monitoring
 title: Next.js에서 Whatap 모니터링 설치 
 authors: Hank
-tags: [Hank, Next.js, whatap, 모니터링, 에이전트 설치]
+tags: [hank, Next.js, whatap, 모니터링, 에이전트 설치]
 keywords:
 - next.js monitoring
 - 와탭랩스

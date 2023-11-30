@@ -2,7 +2,7 @@
 id: wagmi-nextjs-settings
 title: 1편 - settings
 authors: hank
-tags: [dApp,ethers,wagmi,react,next.js]
+tags: [hank,dApp,ethers,wagmi,react,next.js]
 keywords: [hank,dApp,ethers,wagmi,react,next.js]
 last_update:
     date: 1/27/2023

@@ -2,7 +2,7 @@
 id: wagmi-nextjs-connect
 title: 2편 - 지갑 연결
 authors: hank
-tags: [dApp,ethers,wagmi,react,next.js,next-auth,wallet-connect]
+tags: [hank,dApp,ethers,wagmi,react,next.js,next-auth,wallet-connect]
 keywords: [wagmi,next.js,next-auth,wallet-connect]
 last_update:
     date: 1/27/2023

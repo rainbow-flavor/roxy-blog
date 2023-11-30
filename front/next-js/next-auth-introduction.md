@@ -2,12 +2,11 @@
 id: next-auth-introduction
 title: 💻 NextAuth Introduction
 authors: Hank
-tags: [Hank, Next.js, Next-auth, Authorization,]
-keywords:
-- Next-auth
-- next.js
-- 클라이언트 인증
-- JWT
+tags: [hank, Next.js, Next-auth, Authorization]
+keywords: [NextAuth, Nextjs, 클라이언트 인증, JWT, CSRF]
+last_update:
+  date: 05/28/2023
+  author: hank
 ---
 
 # 💻 NextAuth Introduction

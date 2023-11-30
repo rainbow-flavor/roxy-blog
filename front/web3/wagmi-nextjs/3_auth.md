@@ -2,7 +2,7 @@
 id: wagmi-nextjs-auth
 title: 3편 - 사용자 인증
 authors: hank
-tags: [dApp,ethers,wagmi,react,next.js,next-auth]
+tags: [hank,dApp,ethers,wagmi,react,next.js,next-auth]
 keywords: [wagmi,next.js,next-auth]
 last_update:
     date: 3/2/2023

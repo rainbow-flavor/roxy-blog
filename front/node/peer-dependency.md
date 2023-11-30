@@ -2,7 +2,7 @@
 id: peer-dependency
 title: Peer Dependency란?
 authors: hank
-tags: [npm, package, node, peer depedency, peerDependencies]
+tags: [hank, npm, package, node, peer depedency, peerDependencies]
 keywords: [npm, package, node, peer depedency, peerDependencies가 뭐에요]
 last_update:
     date: 4/1/2023
