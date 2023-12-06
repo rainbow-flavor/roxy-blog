@@ -2,7 +2,7 @@
 id: sql-first-step-02
 title: 2장 테이블에서 데이터 검색
 authors: hank
-tags: [hank, mysql, SQL, SELECT, WHERE, NOT, AND, OR]
+tags: [hank, SQL 첫걸음, mysql, SQL, SELECT, WHERE, NOT, AND, OR]
 keywords: [SQL 첫걸음, 테이블, 데이터 검색, SELECT, WHERE, NOT, AND, OR]
 last_update:
     date: 12/01/2023

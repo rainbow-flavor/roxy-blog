@@ -2,8 +2,8 @@
 id: sql-first-step-03
 title: 3장 정렬과 연산
 authors: hank
-tags: [hank, mysql, SQL, ORDER BY, 수치 연산, 문자열 연산, 날짜 연산, AS]
-keywords: [mysql, SQL, ORDER BY, 수치 연산, 문자열 연산, 날짜 연산, AS]
+tags: [hank, SQL 첫걸음, SQL, ORDER BY, 수치 연산, 문자열 연산, 날짜 연산, AS]
+keywords: [SQL 첫걸음, mysql, SQL, ORDER BY, 수치 연산, 문자열 연산, 날짜 연산, AS]
 last_update:
     date: 12/04/2023
     author: hank

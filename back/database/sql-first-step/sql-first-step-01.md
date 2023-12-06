@@ -2,7 +2,7 @@
 id: sql-first-step-01
 title: 1장 데이터베이스와 SQL
 authors: hank
-tags: [hank, DB, DBMS, RDBMS, mysql, PostgreSQL, DML, DDL, DCL]
+tags: [hank, SQL 첫걸음, DB, DBMS, RDBMS, mysql, PostgreSQL, DML, DDL, DCL]
 keywords: [SQL 첫걸음, DB, DBMS, RDBMS, mysql, PostgreSQL, DML, DDL, DCL]
 last_update:
     date: 11/30/2023
