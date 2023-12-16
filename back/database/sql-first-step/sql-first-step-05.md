@@ -1,6 +1,6 @@
 ---
 id: sql-first-step-05
-title: 5장 집계와 서브쿼리 - 집계
+title: 5장 집계
 authors: hank
 tags: [hank, SQL 첫걸음, mysql, 집계함수, COUNT, AVG, SUM, MIN, MAX, GROUP BY]
 keywords: [SQL 첫걸음, mysql, 집계함수, COUNT, AVG, SUM, MIN, MAX, GROUP BY]

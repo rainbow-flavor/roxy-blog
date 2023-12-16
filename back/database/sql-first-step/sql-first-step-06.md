@@ -1,6 +1,6 @@
 ---
 id: sql-first-step-06
-title: 5장 집계와 서브쿼리 - 서브 쿼리
+title: 5장 서브 쿼리
 authors: hank
 tags: [hank, SQL 첫걸음, mysql, sub query, 서브쿼리, 스칼라 서브쿼리, Scalar Subquery]
 keywords: [SQL 첫걸음, mysql, sub query, 서브 쿼리, 메인 쿼리, Scalar Subquery]
