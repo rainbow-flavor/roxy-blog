@@ -2,8 +2,8 @@
 id: sql-first-step-07
 title: 6장 테이블 생성과 제약
 authors: hank
-tags: [hank, SQL 첫걸음, mysql, ALTER TABLE, CONSTRAINT, 제약]
-keywords: [SQL 첫걸음, mysql, ALTER TABLE, CONSTRAINT, 제약]
+tags: [hank, SQL 첫걸음, mysql, ALTER TABLE, CONSTRAINT, 제약, key]
+keywords: [SQL 첫걸음, mysql, ALTER TABLE, CONSTRAINT, 제약, key, PRIMARY KEY]
 last_update:
     date: 12/16/2023
     author: hank
@@ -168,6 +168,26 @@ ALTER TABLE 테이블명 DROP PRIMARY KEY;
 테이블 제약의 경우에는 DROP 명령을 추가로 사용해야합니다.
 <br/>
 
+## Key
+
+테이블에서의 키는 테이블의 한 레코드를 특정할 수 있는 검색키입니다. 기본키 제약이 설정된 테이블에서는 기본키로 검색했을 때 복수의 행이 조회될 수 없습니다. 또한 RDBMS에서는 설계에 따라서 데이터의 중복을 제거하기 위해 여러 테이블로 분리되는데 테이블의 특정 키를 저장할 때도 사용됩니다.
+
+### key의 정의
+
+![sql-first-step-25](../img/sql-first-step-25.png)
+
+> tuple - 각 attribute의 값으로 이루어진 리스트
+> 1. **super key** : table에서 tuple들을 unique하게 식별할 수 있는 attributes set
+> 2. **canidate key(후보키)** : 어느 한 attribute라도 제거하면 unique하게 tuples를 식별할 수 없는 super key 
+>    - ex) { bank_name, account_num } 에서 한가지 attribute라도 빠지면 튜플 값을 결정할 수 없을 때
+> 3. **primary key** : table에서 tuple들을 unique하게 식별하려고 선택된 (canidate) key 
+>    - 보통은 primary key를 attribute가 적은 것으로 고릅니다.
+> 4. unique key(대체키) : primary key가 아닌 canidate key
+> 5. **foreign key(외래키)** : 다른 테이블의 Primary Key
+> 6. prime attribute : 임의의 key에 속하는 attribute
+> 7. non-prime attribute : 어떤 key에도 속하지 않는 attribute
+
+<br/>
 
 # reference
 
