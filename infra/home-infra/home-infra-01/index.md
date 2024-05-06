@@ -1,6 +1,6 @@
 ---
 id: home-infra-01
-title: 홈 서버 세팅부터 쿠버네티스 설치, 배포까지 all in one - 물리 서버 구성하기 1편
+title: 홈 서버 세팅부터 쿠버네티스 설치, 배포까지 all in one 1편 - 물리 서버 구성하기 
 authors: irostub
 tags: [irostub,인프라,2023년,쿠버네티스,서버,홈인프라]
 keywords: [irostub,인프라,2023년,쿠버네티스,홈인프라]
