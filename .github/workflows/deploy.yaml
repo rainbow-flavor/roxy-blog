@@ -11,7 +11,7 @@ jobs:
         name: login to irohub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.IROSTUB_DOCKERHUB_URL }}
+          username: ${{ secrets.IROSTUB_DOCKERHUB_USER }}
           password: ${{ secrets.IROSTUB_DOCKERHUB_TOKEN }}
       -
         name: build and push
