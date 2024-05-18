@@ -1,0 +1,21 @@
+name: builddeploy
+on:
+  push:
+    branches: [master]
+jobs:
+  image-build-push:
+    # needs: discord
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: login to irohub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.IROSTUB_DOCKERHUB_URL }}
+          password: ${{ secrets.IROSTUB_DOCKERHUB_TOKEN }}
+      -
+        name: build and push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: ${{ secrets.IROSTUB_REPO }}/roxy-blog:latest
