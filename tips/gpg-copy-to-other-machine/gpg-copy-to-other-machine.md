@@ -2,11 +2,21 @@
 id: gpg-copy-to-other-machine
 title: 다른 기기로 gpg 키 복사 및 커밋 서명
 authors: irostub
-tags: [irostub,2021,gpg,git,mac,troubleshooting]
-keywords: [gpg,gnupg,key,git,import,export,mac,How to export and import gpg key commit sign other machine]
+tags: [irostub, 2021, gpg, git, mac, troubleshooting]
+keywords:
+    [
+        gpg,
+        gnupg,
+        key,
+        git,
+        import,
+        export,
+        mac,
+        How to export and import gpg key commit sign other machine,
+    ]
 last_update:
-  date: 2/26/2021
-  author: irostub
+    date: 2/26/2021
+    author: irostub
 ---
 
 # 다른 기기로 gpg 키 복사 및 커밋 서명
@@ -16,22 +26,24 @@ last_update:
 그래서 이번 기회에 직접 부딛혀서 GPG 키를 복사하여 옮긴 뒤 새로운 기기에서 서명하는 과정을 적어봅니다.
 
 :::tip 과정 요약
+
 1. 기존 데스크톱에서 GPG Key 를 Export 하기
 2. 새로운 기기에서 GPG Key 를 Import 하기
 3. 가져온 키 확인 및 오류 해결
 4. (git commit sign 을 위한 옵션) 깃 커밋 서명 설정
 5. 시원한 오렌지 주스 한잔
-:::
+   :::
+
 ## **기존 데스크톱에서 GPG Key 를 Export 하기**
 
 macOS 기준으로 terminal 을 켭니다.
 
-- {...}, 다음과 같이 중괄호로 표기한 부분은 중괄호를 제외하고 입력합니다.
-- gpg --list-keys 명령을 실행하면 출력결과가 다음과 같이 나옵니다.
+-   \{...\}, 다음과 같이 중괄호로 표기한 부분은 중괄호를 제외하고 입력합니다.
+-   gpg --list-keys 명령을 실행하면 출력결과가 다음과 같이 나옵니다.
 
-  uid [상태] 키 아이디(별칭) <이메일>
+    uid [상태] 키 아이디(별칭) \<이메일\>
 
-아래 명령에서 {키 아이디}를 키 리스트 출력에서 얻은 키 아이디로 넣어줍니다.
+아래 명령에서 \{키 아이디\}를 키 리스트 출력에서 얻은 키 아이디로 넣어줍니다.
 내보낸 키의 저장 경로는 현재 터미널이 위치한 디렉터리에 저장됩니다.
 
 ### 공개키 내보내기(public key export)
@@ -145,8 +157,8 @@ ssb rsa4096 2021-02-01 [E]
 키 이름을 적었다면 다음을 실행합니다.
 다음 명령어를 실행하는 이유는
 
-- 첫번째, 매 커밋 서명마다 어떤 gpg 키를 사용할지 적고싶지 않습니다.
-- 두번째, 커밋 서명마다 -S 옵션을 붙이고싶지 않습니다. 그렇기 때문에 다음 명령어를 실행합니다.
+-   첫번째, 매 커밋 서명마다 어떤 gpg 키를 사용할지 적고싶지 않습니다.
+-   두번째, 커밋 서명마다 -S 옵션을 붙이고싶지 않습니다. 그렇기 때문에 다음 명령어를 실행합니다.
 
 ```
 git config --global user.signingkey ABCDEFGHIJKLMNOP1234567890

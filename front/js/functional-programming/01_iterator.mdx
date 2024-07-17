@@ -2,12 +2,26 @@
 id: iterator
 title: Iteration 프로토콜
 authors: hank
-tags: [hank,iterator, iterable, 이터러블, for...of, Map, Set, ES6, loop, generator]
-keywords: [iterator, iterable, 이터러블, for...of, Map, Set, ES6, loop, generator]
+tags:
+    [
+        hank,
+        iterator,
+        iterable,
+        이터러블,
+        for...of,
+        Map,
+        Set,
+        ES6,
+        loop,
+        generator,
+    ]
+keywords:
+    [iterator, iterable, 이터러블, for...of, Map, Set, ES6, loop, generator]
 last_update:
     date: 10/21/2023
     author: hank
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -21,39 +35,42 @@ import TabItem from '@theme/TabItem';
 ```js
 const list = [1, 2, 3];
 for (let i = 0; i < list.length; i++) {
-  console.log(list[i]);
+    console.log(list[i]);
 }
 
 const str = 'abc';
 for (let i = 0; i < str.length; i++) {
-  console.log(str[i]);
+    console.log(str[i]);
 }
 
-const elements = document.querySelectorAll('span')
+const elements = document.querySelectorAll('span');
 for (let i = 0; i < elements.length; i++) {
-  console.log(elements[i]);
+    console.log(elements[i]);
 }
 ```
+
 ```mdx-code-block
 </TabItem>
 <TabItem value="ES6" label="ES6 loop">
 ```
+
 ```js
 const list = [1, 2, 3];
 for (const a of list) {
-  console.log(a)
+    console.log(a);
 }
 
 const str = 'abc';
 for (const a of str) {
-  console.log(a)
+    console.log(a);
 }
 
-const elements = document.querySelectorAll('span')
+const elements = document.querySelectorAll('span');
 for (const a of elements) {
-  console.log(a);
+    console.log(a);
 }
 ```
+
 ```mdx-code-block
 </TabItem>
 </Tabs>
@@ -64,8 +81,8 @@ ES6가 나오면서부터는 `Iteration protocols`을 통해서도 순회가능�
 
 ES6의 for...of 문법은 `Iteration protocols`을 사용하고 있으며, 이터러블하지 않은 객체는 순회할 수 없습니다
 
-
 ## [ES6] Map, Set
+
 ```mdx-code-block
 <Tabs>
 <TabItem value="Set" label="ES6 Set의 순회">
@@ -74,7 +91,7 @@ ES6의 for...of 문법은 `Iteration protocols`을 사용하고 있으며, 이�
 ```js
 const set = new Set([1, 2, 3]);
 for (const a of set) {
-    console.log(a)
+    console.log(a);
 }
 // 1
 // 2
@@ -88,11 +105,12 @@ console.log(set[1]); // undefined
 </TabItem>
 <TabItem value="Map" label="ES6 Map의 순회">
 ```
+
 ```js
 const map = new Map([
-  ['a', 1],
-  ['b', 2],
-  ['c', 3],
+    ['a', 1],
+    ['b', 2],
+    ['c', 3],
 ]);
 
 for (const a of map) {
@@ -105,22 +123,23 @@ for (const a of map) {
 console.log(map[0]); // undefined
 console.log(map[1]); // undefined
 ```
+
 ```mdx-code-block
 </TabItem>
 <TabItem value="Symbol.iterator" label="Symbol.iterator">
 ```
 
 ```js
-console.log(map[Symbol.iterator])
+console.log(map[Symbol.iterator]);
 // ƒ entries() { [native code] }
-console.log(map[Symbol.iterator]())
+console.log(map[Symbol.iterator]());
 // MapIterator {'a' => 1, 'b' => 2, 'c' => 3}
 
-console.log(set[Symbol.iterator])
+console.log(set[Symbol.iterator]);
 // ƒ values() { [native code] }
-console.log(set[Symbol.iterator]())
+console.log(set[Symbol.iterator]());
 // SetIterator {1, 2, 3}
-````
+```
 
 ```mdx-code-block
 </TabItem>
@@ -132,11 +151,11 @@ const set = new Set([1, 2, 3]);
 set[Symbol.iterator] = null;
 
 for (const a of set) {
-    console.log(a)
+    console.log(a);
 }
 
 // Uncaught TypeError: set is not iterable
-````
+```
 
 ```mdx-code-block
 </TabItem>
@@ -146,7 +165,7 @@ for (const a of set) {
 Map, Set 자료구조를 기존에 쓰던 숫자 키로 접근하여 순회를 돌면 아무것도 리턴받을 수 없는 것을 볼 수 있습니다. ES6부터는 Symbol.iterator를 활용해서
 `Iteration protocol`을 제공합니다.
 
-- ES6 Spread 연산자, Promise.all(), Promise.allSettled(), Map, Set, for...of 등등에서 사용 가능
+-   ES6 Spread 연산자, Promise.all(), Promise.allSettled(), Map, Set, for...of 등등에서 사용 가능
 
 만약 Symbol.iterator에 null을 할당한다면 for...of 문을 활용할 수 없는 것을 확인할 수 있으며 배열, 유사배열, Map 등 `iteration protocol`을 사용하는 자료구조들 또한 모두 같습니다.
 
@@ -154,21 +173,19 @@ Map, Set 자료구조를 기존에 쓰던 숫자 키로 접근하여 순회를 �
 
 ## Iterator
 
-
 ```js title="Iterator의 동작"
 const arr = [1, 2, 3];
 const iterator = arr[Symbol.iterator]();
 
-iterator.next() // {value: 1, done: false}
-iterator.next() // {value: 2, done: false}
-iterator.next() // {value: 3, done: false}
-iterator.next() // {value: undefined, done: true}
+iterator.next(); // {value: 1, done: false}
+iterator.next(); // {value: 2, done: false}
+iterator.next(); // {value: 3, done: false}
+iterator.next(); // {value: undefined, done: true}
 ```
 
-- **iterable**: 이터레이터를 리턴하는 `[Symbol.iterator]()` 를 가진 값
-- **iterator**: { value, done } 객체를 리턴하는 next 함수를 가진 값
-- **iteration protocol**: 이터러블을 for...of, 전개 연산자 등과 함께 동작하도록한 규약
-
+-   **iterable**: 이터레이터를 리턴하는 `[Symbol.iterator]()` 를 가진 값
+-   **iterator**: \{ value, done \} 객체를 리턴하는 next 함수를 가진 값
+-   **iteration protocol**: 이터러블을 for...of, 전개 연산자 등과 함께 동작하도록한 규약
 
 ```mdx-code-block
 <Tabs>
@@ -177,20 +194,20 @@ iterator.next() // {value: undefined, done: true}
 
 ```js
 const iterable = {
-  [Symbol.iterator]() {
-    let i = 3;
+    [Symbol.iterator]() {
+        let i = 3;
 
-    return {
-      next() {
-        return i === 0
-          ? { done: true }
-          : {
-              value: i--,
-              done: false,
-            };
-      },
-    };
-  },
+        return {
+            next() {
+                return i === 0
+                    ? { done: true }
+                    : {
+                          value: i--,
+                          done: false,
+                      };
+            },
+        };
+    },
 };
 
 const iterator = iterable[Symbol.iterator]();
@@ -200,11 +217,11 @@ console.log(iterator.next()); // { value: 1, done: false }
 console.log(iterator.next()); // { done: true }
 ```
 
-
 ```mdx-code-block
 </TabItem>
 <TabItem value="iterator2" label="Iterator의 두번째 동작">
 ```
+
 ```js
 const arr = [1, 2, 3];
 const iterator = arr[Symbol.iterator]();
@@ -219,6 +236,7 @@ for (const a of arr) log(a);
 // 2
 // 3
 ```
+
 ```mdx-code-block
 </TabItem>
 </Tabs>
@@ -226,7 +244,7 @@ for (const a of arr) log(a);
 
 첫 번째 코드는 기존의 동작을 참고해서 예상으로 작성해보았지만 구현이 안된 케이스가 있습니다.
 
-- **iterable**: 이터레이터를 리턴하는 `[Symbol.iterator]()` 를 가진 값
+-   **iterable**: 이터레이터를 리턴하는 `[Symbol.iterator]()` 를 가진 값
 
 for...of 문은 iterable한 객체만 사용할 수 있기 때문에 두번째 코드처럼 이터레이터 또한 Symbol.iterator를 가지고 있다는 뜻이 됩니다.
 
@@ -238,12 +256,13 @@ for...of 문은 iterable한 객체만 사용할 수 있기 때문에 두번째 �
 <Tabs>
 <TabItem value="iterable iterator" label="iterable iterator">
 ```
+
 ```js
 const arr = [1, 2, 3];
 const iterator = arr[Symbol.iterator]();
 
 for (const a of iterator) {
-    console.log(a)
+    console.log(a);
 }
 // 1
 // 2
@@ -252,31 +271,34 @@ for (const a of iterator) {
 console.log(iterator[Symbol.iterator]); //[Function: [Symbol.iterator]]
 console.log(iterator[Symbol.iterator]() === iterator); //true
 ```
+
 ```mdx-code-block
 </TabItem>
 <TabItem value="iterable iterator2" label="iterable 기본 동작 예상 코드 수정해보기">
 ```
+
 ```js
 const iterable = {
-  [Symbol.iterator]() {
-    let i = 3;
+    [Symbol.iterator]() {
+        let i = 3;
 
-    return {
-      next() {
-        return i === 0
-          ? { done: true }
-          : {
-              value: i--,
-              done: false,
-            };
-      },
-      [Symbol.iterator]() {
-        return this;
-      },
-    };
-  },
+        return {
+            next() {
+                return i === 0
+                    ? { done: true }
+                    : {
+                          value: i--,
+                          done: false,
+                      };
+            },
+            [Symbol.iterator]() {
+                return this;
+            },
+        };
+    },
 };
 ```
+
 ```mdx-code-block
 </TabItem>
 </Tabs>
@@ -284,30 +306,30 @@ const iterable = {
 
 이와 같이 자기 자신을 리턴하는 iterator를 Mdn에선 iterable iterator라고도 부르며 Well-Formed iterator라고도 합니다.
 
-
 :::tip Iteration protocol을 따르는 JS 사례들
-- Facebook의 [immutable.js](https://github.com/immutable-js/immutable-js/blob/main/src/Iterator.js)
-- Web API
-- DOM
-- [mobx](https://mobx-state-tree.js.org/intro/welcome)
-- [redux-saga](https://github.com/redux-saga/redux-saga)
-:::
 
+-   Facebook의 [immutable.js](https://github.com/immutable-js/immutable-js/blob/main/src/Iterator.js)
+-   Web API
+-   DOM
+-   [mobx](https://mobx-state-tree.js.org/intro/welcome)
+-   [redux-saga](https://github.com/redux-saga/redux-saga)
+    :::
 
 ## Generator
+
 ```js
 function* gen() {
-  yield 1;
-  yield 2;
-  yield 3;
-  // 순회가 끝날 때 마지막으로 리턴하는 값으로 순회에 포함되지않는다
-  // done이 true가 될 때 리턴한다.
-  return 100;
+    yield 1;
+    yield 2;
+    yield 3;
+    // 순회가 끝날 때 마지막으로 리턴하는 값으로 순회에 포함되지않는다
+    // done이 true가 될 때 리턴한다.
+    return 100;
 }
 
 const iterator = gen();
 console.log(iterator); // Object [Generator] {}
-console.log(iterator[Symbol.iterator]() === iterator) // true
+console.log(iterator[Symbol.iterator]() === iterator); // true
 // log(iter.next());
 
 for (const a of iterator) console.log(a);
@@ -319,9 +341,8 @@ for (const a of iterator) console.log(a);
 `Generator` 함수는 iterator 함수를 리턴하는 함수입니다. 지금까지는 데이터의 Symbol.iterator에 의존해서 순회를 구현했다면 Generator 함수를 이용해서
 문장으로 순회 로직을 작성할 수 있습니다.
 
-- `yield`: iterator의 next 함수를 실행할 때 리턴할 값 지정
-- `return`: iterator의 next 함수가 done이 true인 값을 리턴할 때 리턴할 값 지정 (for...of 문에서는 리턴하지 않음)
-
+-   `yield`: iterator의 next 함수를 실행할 때 리턴할 값 지정
+-   `return`: iterator의 next 함수가 done이 true인 값을 리턴할 때 리턴할 값 지정 (for...of 문에서는 리턴하지 않음)
 
 ```mdx-code-block
 <Tabs>
@@ -330,11 +351,11 @@ for (const a of iterator) console.log(a);
 
 ```js
 function* odds(l) {
-  for (let i = 0; i < l; i++) {
-    if (i % 2) yield i;
-  }
+    for (let i = 0; i < l; i++) {
+        if (i % 2) yield i;
+    }
 
-  return "종료되었습니다."
+    return '종료되었습니다.';
 }
 
 const iterator = odds(10);
@@ -350,10 +371,11 @@ console.log(iterator.next()); // { value: "종료되었습니다.", done: true}
 </TabItem>
 <TabItem value="loop" label="loop">
 ```
+
 ```js
 const iterator = odds(10);
 for (const odd of iterator) {
-    console.log(odd)
+    console.log(odd);
 }
 // 1
 // 3
@@ -361,15 +383,17 @@ for (const odd of iterator) {
 // 7
 // 9
 ```
+
 ```mdx-code-block
 </TabItem>
 <TabItem value="spread" label="Spread 연산자">
 ```
+
 ```js
 const iterator = odds(10);
 
 console.log([...odds(10)]); // [1, 3, 5, 7, 9]
-````
+```
 
 ```mdx-code-block
 </TabItem>
@@ -380,6 +404,6 @@ Iteration protocol과 generator 함수의 등장으로 JS 생턔계에서 다형
 
 ## Reference
 
-- [유인동의 함수형 프로그래밍](https://www.inflearn.com/course/functional-es6/dashboard)
-- [MDN Iteration protocols](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Iteration_protocols)
-- [Iteration & for...of | PoiemaWeb](https://poiemaweb.com/es6-iteration-for-of)
+-   [유인동의 함수형 프로그래밍](https://www.inflearn.com/course/functional-es6/dashboard)
+-   [MDN Iteration protocols](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Iteration_protocols)
+-   [Iteration & for...of | PoiemaWeb](https://poiemaweb.com/es6-iteration-for-of)

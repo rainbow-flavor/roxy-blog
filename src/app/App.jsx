@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import Head from '@docusaurus/Head';
+import PageTransition from './PageTransition';
+import StairTransition from './StairTransition';
 
 const App = ({ children }) => {
     useEffect(() => {
@@ -19,7 +21,8 @@ const App = ({ children }) => {
     return (
         <>
             <Head></Head>
-            {children}
+            <StairTransition />
+            <PageTransition>{children}</PageTransition>
         </>
     );
 };

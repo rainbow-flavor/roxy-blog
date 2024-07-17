@@ -12,11 +12,15 @@ const ViewCount = () => {
     const isDarkMode = colorMode === 'dark';
 
     const fetchViewCount = async () => {
-        const { data } = await api.post(`/views`, {
-            urlPath: window.location.pathname,
-        });
+        try {
+            const { data } = await api.post(`/views`, {
+                urlPath: window.location.pathname,
+            });
 
-        setViews(data.viewCount);
+            setViews(data.viewCount);
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     useEffect(() => {

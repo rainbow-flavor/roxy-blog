@@ -8,11 +8,15 @@ const Comment = () => {
     const [count, setCount] = useState(0);
     const [list, setList] = useState([]);
     const getCommentList = async () => {
-        const path = window.location.pathname;
-        const { data } = await api.get(`/comment?path=${path}`);
+        try {
+            const path = window.location.pathname;
+            const { data } = await api.get(`/comment?path=${path}`);
 
-        setCount(data.count);
-        setList(data.data);
+            setCount(data.count);
+            setList(data.data);
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     useEffect(() => {
