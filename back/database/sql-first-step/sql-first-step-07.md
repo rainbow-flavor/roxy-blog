@@ -13,13 +13,13 @@ last_update:
 
 데이터베이스 객체란 테이블이나 뷰, 인덱스 등 데이터베이스 내에 정의하는 모든 것을 일컫는 말입니다.
 
-- 기존 이름이나 예약어와 중복하지 않는다
-- 언더스코어(_) 이외의 기호는 사용할 수 없다.
-- 시스템이 허용하는 길이를 초과하지 않는다.
+-   기존 이름이나 예약어와 중복하지 않는다
+-   언더스코어(\_) 이외의 기호는 사용할 수 없다.
+-   시스템이 허용하는 길이를 초과하지 않는다.
 
 ```bash
 // bash
-mysql -u root -p // sql 로그인 
+mysql -u root -p // sql 로그인
 
 // sql
 CREATE SCHEMA `스키마_이름` DEFAULT CHARACTER SET utf8;
@@ -28,17 +28,14 @@ CREATE SCHEMA `스키마_이름` DEFAULT CHARACTER SET utf8;
 데이터베이스 객체는 스키마라는 네임스페이스 범위에서 생성됩니다. 우리는 mysql을 설치하고 스키마를 기준으로 여러 서비스의 DB를 생성할 수 있습니다. 스키마를 기준으로 데이터들이 구조화하고 정리됩니다.
 <br/>
 
-
 <br/>
-
 
 ## 테이블 작성, 삭제, 변경
 
 DDL 명령어들은 데이터를 정의하거나 스키마 내의 객체를 관리할 때 사용됩니다.
 
-- DML : SELECT, INSERT, DELETE, UPDATE 등 데이터를 조작하는 명령
-  <br/>
-
+-   DML : SELECT, INSERT, DELETE, UPDATE 등 데이터를 조작하는 명령
+    <br/>
 
 ### 테이블 작성
 
@@ -63,7 +60,6 @@ DESC 테이블명;
 테이블의 컬럼 구성을 확인할 수 있습니다.
 <br/>
 
-
 ### 테이블 삭제
 
 ```sql
@@ -79,7 +75,6 @@ TRUNCATE TABLE 테이블명;
 
 데이터베이스에서 테이블을 삭제하는 명령어입니다. 만약 테이블 정의는 그대로 둔채 삭제하고 싶다면 `DELETE` 명령으로 실행해야합니다. 처리속도를 빠르게 하고 싶을 땐 `TRUNCATE TABLE` 을 사용합니다.
 <br/>
-
 
 ### 테이블 변경
 
@@ -100,12 +95,10 @@ ALTER TABLE 테이블 DROP `기존 열명`;
 
 `ALTER TABLE` 명령어는 테이블을 생성한 뒤에 변경하고 싶을 때 사용합니다. 구성된 컬럼, 제약을 추가, 삭제, 변경할 수 있습니다.
 
-- `MODIFY` : 변경을 시도할 때 레코드들의 데이터 또한 같이 변환되는데 실패 시 ALTER 명령도 중지됨
-  <br/>
-
+-   `MODIFY` : 변경을 시도할 때 레코드들의 데이터 또한 같이 변환되는데 실패 시 ALTER 명령도 중지됨
+    <br/>
 
 <br/>
-
 
 ## 제약
 
@@ -126,10 +119,10 @@ CREATE TABLE 테이블명 (
 
 열에 대해 정의하는 제약을 열제약이라고 부릅니다. 열 제약에는 많은 키워드가 있습니다.
 
-- `DEFAULT “value”` : 레코드가 생성될 때 기본값을 제공합니다.
-- `CHECK(열명 조건문)` : 조건문을 만족해야만 레코드를 생성할 수 있게 할 수 있습니다.
-- `NOT NULL` : NULL 값을 제한하는 제약입니다.
-- `UNIQUE` : 테이블에서 중복되는 값을 제한하는 제약입니다.
+-   `DEFAULT “value”` : 레코드가 생성될 때 기본값을 제공합니다.
+-   `CHECK(열명 조건문)` : 조건문을 만족해야만 레코드를 생성할 수 있게 할 수 있습니다.
+-   `NOT NULL` : NULL 값을 제한하는 제약입니다.
+-   `UNIQUE` : 테이블에서 중복되는 값을 제한하는 제약입니다.
 
 ```sql
 CREATE TABLE 테이블명 (
@@ -140,10 +133,9 @@ CREATE TABLE 테이블명 (
 
 `CONSTRAINT` 키워드를 사용하면 제약사항에 이름을 붙일 수 있습니다. 이름을 붙이는 이유는 DB에서 제약사항을 위반하여 메세지를 보내줄 때 자동으로 생성되는 이름이 아닌 우리가 선언한 이름으로 보여줄 수 있습니다.
 
-- 붙였을 때 : Check constraint ‘age_over_20’ is violated.
-- 붙이지 않았을 때 : Check constraint ‘테이블명_chk1’ is violated.
-  <br/>
-
+-   붙였을 때 : Check constraint ‘age_over_20’ is violated.
+-   붙이지 않았을 때 : Check constraint ‘테이블명\_chk1’ is violated.
+    <br/>
 
 ### 제약 변경
 
@@ -176,11 +168,12 @@ ALTER TABLE 테이블명 DROP PRIMARY KEY;
 ![sql-first-step-25](../img/sql-first-step-25.png)
 
 > tuple - 각 attribute의 값으로 이루어진 리스트
+>
 > 1. **super key** : table에서 tuple들을 unique하게 식별할 수 있는 attributes set
-> 2. **canidate key(후보키)** : 어느 한 attribute라도 제거하면 unique하게 tuples를 식별할 수 없는 super key 
->    - ex) { bank_name, account_num } 에서 한가지 attribute라도 빠지면 튜플 값을 결정할 수 없을 때
-> 3. **primary key** : table에서 tuple들을 unique하게 식별하려고 선택된 (canidate) key 
->    - 보통은 primary key를 attribute가 적은 것으로 고릅니다.
+> 2. **canidate key(후보키)** : 어느 한 attribute라도 제거하면 unique하게 tuples를 식별할 수 없는 super key
+>     - ex) \{ bank_name, account_num \} 에서 한가지 attribute라도 빠지면 튜플 값을 결정할 수 없을 때
+> 3. **primary key** : table에서 tuple들을 unique하게 식별하려고 선택된 (canidate) key
+>     - 보통은 primary key를 attribute가 적은 것으로 고릅니다.
 > 4. unique key(대체키) : primary key가 아닌 canidate key
 > 5. **foreign key(외래키)** : 다른 테이블의 Primary Key
 > 6. prime attribute : 임의의 key에 속하는 attribute
