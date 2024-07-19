@@ -10,7 +10,7 @@ last_update:
 ---
 
 
-## 👹 Why Design System Started
+# 👹 Why Design System Started
 
 ![img.png](img.png)
 

@@ -15,7 +15,7 @@ const Toggle = ({ on = false, onClick }) => {
     }, [on]);
 
     return (
-        <div className={styles.container} onClick={handleClick}>
+        <div className={clsx(styles.container)} onClick={handleClick}>
             <div className={clsx(styles.toggle, isOn && styles.checked)} />
         </div>
     );

@@ -21,8 +21,7 @@ const App = ({ children }) => {
     return (
         <>
             <Head></Head>
-            <StairTransition />
-            <PageTransition>{children}</PageTransition>
+            {children}
         </>
     );
 };

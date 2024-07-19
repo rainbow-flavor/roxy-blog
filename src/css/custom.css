@@ -1,10 +1,11 @@
-@tailwind base;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*@tailwind base;*/
 @tailwind components;
 @tailwind utilities;
 
 :root {
     --ifm-color-primary: #2e8555;
-
     --ifm-color-primary-dark: #29784c;
     --ifm-color-primary-darker: #277148;
     --ifm-color-primary-darkest: #205d3b;

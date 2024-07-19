@@ -3,12 +3,13 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 
 import styles from './index.module.css';
-import {
-    HomepageFeatures,
-    NerdHompageFeatures,
-} from '../components/homepage-feature';
+
 import { useMainContext } from '../context/main-context';
 import HomepageHeader from '../components/hompage/homepage-header';
+import {
+    HomepageFeatures,
+    NerdHomepageFeatures,
+} from '../components/homepage-feature';
 
 export default function Home() {
     const { siteConfig } = useDocusaurusContext();
@@ -21,7 +22,7 @@ export default function Home() {
         >
             {isStrict && <HomepageHeader />}
             <main className={isStrict ? styles.strictMain : styles.main}>
-                {isStrict ? <HomepageFeatures /> : <NerdHompageFeatures />}
+                {isStrict ? <HomepageFeatures /> : <NerdHomepageFeatures />}
             </main>
         </Layout>
     );
